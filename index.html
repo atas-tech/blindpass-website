@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>agent-Kryptos — Zero-Knowledge Secret Provisioning for AI Agents</title>
+  <meta name="description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval. The server never sees plaintext.">
+  <meta name="keywords" content="AI agent security, HPKE encryption, secret provisioning, zero-knowledge, agent credentials">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Particle Canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-icon">🔐</span>
+        <span class="logo-text">agent-<span class="logo-highlight">Kryptos</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#features">Features</a>
+        <a href="#get-started" class="nav-cta">Get Started</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Open Source · MIT License
+        </div>
+        <h1 class="hero-title">
+          Some secrets are meant to stay <span class="gradient-text">hidden.</span>
+          <br>Even from the agents that use them.
+        </h1>
+        <p class="hero-description">
+          Zero-knowledge secret provisioning for AI agents. HPKE end-to-end encryption. 
+          In-memory only. No plaintext ever touches the wire.
+        </p>
+        <div class="hero-buttons">
+          <a href="#get-started" class="btn btn-primary">
+            <span>Get Started</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://github.com" class="btn btn-outline" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>View on GitHub</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">11</span>
+            <span class="stat-label">Security Layers</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">RFC 9180</span>
+            <span class="stat-label">HPKE Standard</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">0</span>
+            <span class="stat-label">Plaintext Exposure</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="shield-container">
+          <div class="shield-ring ring-1"></div>
+          <div class="shield-ring ring-2"></div>
+          <div class="shield-ring ring-3"></div>
+          <div class="shield-core">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="url(#shield-gradient)" stroke-width="1.5">
+              <defs>
+                <linearGradient id="shield-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00f5d4"/>
+                  <stop offset="100%" stop-color="#7b61ff"/>
+                </linearGradient>
+              </defs>
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="data-stream stream-1"></div>
+          <div class="data-stream stream-2"></div>
+          <div class="data-stream stream-3"></div>
+          <div class="data-stream stream-4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section id="problem">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title">The Secret Problem <span class="gradient-text">No One Talks About</span></h2>
+        <p class="section-subtitle">AI agents need credentials to do their jobs. But every current method leaks secrets.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card" data-animate>
+          <div class="problem-icon danger">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <h3>Chat Leaks</h3>
+          <p>AI agents ask for API keys in chat. Keys get logged, stored in conversation history, and leaked through prompt injection.</p>
+        </div>
+        <div class="problem-card" data-animate>
+          <div class="problem-icon danger">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 12v6M9 15h6"/></svg>
+          </div>
+          <h3>Config Files</h3>
+          <p>.env files and configs get committed to repos, shared in Slack, and copied across machines unencrypted.</p>
+        </div>
+        <div class="problem-card" data-animate>
+          <div class="problem-icon danger">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><line x1="12" y1="3" x2="12" y2="7" stroke="#ff4757" stroke-dasharray="2,2"/></svg>
+          </div>
+          <h3>Plain Text on the Wire</h3>
+          <p>Secrets transmitted as plain text through middleware, proxies, and gateways that can read everything passing through.</p>
+        </div>
+        <div class="problem-card" data-animate>
+          <div class="problem-icon danger">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><path d="M4.93 4.93l14.14 14.14" stroke="#ff4757"/></svg>
+          </div>
+          <h3>No Expiry</h3>
+          <p>Secrets persist forever in memory, logs, and databases with no automatic cleanup or time-based expiration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">The Solution</span>
+        <h2 class="section-title">How agent-Kryptos <span class="gradient-text">Works</span></h2>
+        <p class="section-subtitle">A secure 5-step process for end-to-end encrypted secret delivery.</p>
+      </div>
+      <div class="flow-container">
+        <div class="flow-line"></div>
+        <div class="flow-steps">
+          <div class="flow-step" data-animate>
+            <div class="step-number">1</div>
+            <div class="step-card">
+              <div class="step-icon">🤖</div>
+              <h3>Keypair Generation</h3>
+              <p>Agent generates an ephemeral HPKE keypair. Keys exist only in memory — never written to disk, never logged.</p>
+            </div>
+          </div>
+          <div class="flow-step" data-animate>
+            <div class="step-number">2</div>
+            <div class="step-card">
+              <div class="step-icon">🔒</div>
+              <h3>Secure Request</h3>
+              <p>SPS creates a secret request with 3-minute TTL, HMAC-signed URL, and a human-readable confirmation code.</p>
+            </div>
+          </div>
+          <div class="flow-step" data-animate>
+            <div class="step-number">3</div>
+            <div class="step-card">
+              <div class="step-icon">💬</div>
+              <h3>Link Delivery</h3>
+              <p>Gateway sends the secure URL to human via Telegram or Slack. The LLM never sees the URL or confirmation code.</p>
+            </div>
+          </div>
+          <div class="flow-step" data-animate>
+            <div class="step-number">4</div>
+            <div class="step-card">
+              <div class="step-icon">🌐</div>
+              <h3>Client-Side Encryption</h3>
+              <p>Human opens the URL, verifies the confirmation code, enters the secret. Browser encrypts with HPKE.Seal — no server sees plaintext.</p>
+            </div>
+          </div>
+          <div class="flow-step" data-animate>
+            <div class="step-number">5</div>
+            <div class="step-card">
+              <div class="step-icon">✅</div>
+              <h3>Retrieve & Destroy</h3>
+              <p>Agent atomically retrieves the ciphertext (single-use), decrypts in memory, then immediately destroys all keys.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture Section -->
+  <section id="architecture">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">Architecture</span>
+        <h2 class="section-title">Built for <span class="gradient-text">Zero Trust</span></h2>
+        <p class="section-subtitle">Four components working together with cryptographic guarantees at every boundary.</p>
+      </div>
+      <div class="arch-grid">
+        <div class="arch-card" data-animate>
+          <div class="arch-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>SPS Server</h3>
+          <p>Redis-backed secret provisioning with 3-min auto-expiry TTL, atomic single-use GETDEL retrieval via Lua scripts, and Ed25519 JWT authentication.</p>
+          <div class="arch-tags">
+            <span>Fastify</span><span>Redis</span><span>JWT</span>
+          </div>
+        </div>
+        <div class="arch-card" data-animate>
+          <div class="arch-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3>Browser UI</h3>
+          <p>Self-contained encryption page. No external dependencies, no CDN. HPKE.Seal happens entirely in your browser with a vendored, audited library.</p>
+          <div class="arch-tags">
+            <span>Vanilla JS</span><span>HPKE</span><span>Zero-Dep</span>
+          </div>
+        </div>
+        <div class="arch-card" data-animate>
+          <div class="arch-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Agent Skill</h3>
+          <p>HPKE keypair generation, in-memory SecretStore with Buffer zeroing, custom toJSON() returning [REDACTED], and lazy re-request flow.</p>
+          <div class="arch-tags">
+            <span>TypeScript</span><span>Buffer</span><span>Skills</span>
+          </div>
+        </div>
+        <div class="arch-card" data-animate>
+          <div class="arch-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <h3>Gateway</h3>
+          <p>LLM-blind URL generation, egress URL filtering with homograph attack detection, Ed25519 identity signing, and anti-phishing controls.</p>
+          <div class="arch-tags">
+            <span>DLP</span><span>Ed25519</span><span>Filter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Defense in Depth Section -->
+  <section id="defense">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">Security</span>
+        <h2 class="section-title"><span class="gradient-text">11 Layers</span> of Security</h2>
+        <p class="section-subtitle">Defense in depth, not security theater. Every layer neutralizes a specific threat.</p>
+      </div>
+      <div class="defense-stack">
+        <div class="defense-layer" data-animate data-layer="1">
+          <span class="layer-num">01</span>
+          <div class="layer-content">
+            <h4>HPKE Ephemeral Keys</h4>
+            <p>Key compromise → no forward exposure</p>
+          </div>
+          <span class="layer-badge">Crypto</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="2">
+          <span class="layer-num">02</span>
+          <div class="layer-content">
+            <h4>Client-Side Encryption</h4>
+            <p>Secret never plaintext on wire</p>
+          </div>
+          <span class="layer-badge">Crypto</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="3">
+          <span class="layer-num">03</span>
+          <div class="layer-content">
+            <h4>Zero-Knowledge SPS</h4>
+            <p>Service compromise → no secrets exposed</p>
+          </div>
+          <span class="layer-badge">Architecture</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="4">
+          <span class="layer-num">04</span>
+          <div class="layer-content">
+            <h4>Single-Use IDs + 3-Min TTL</h4>
+            <p>Replay attacks blocked</p>
+          </div>
+          <span class="layer-badge">Protocol</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="5">
+          <span class="layer-num">05</span>
+          <div class="layer-content">
+            <h4>Hardened Device Flow</h4>
+            <p>Phishing via prompt injection neutralized</p>
+          </div>
+          <span class="layer-badge">UX</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="6">
+          <span class="layer-num">06</span>
+          <div class="layer-content">
+            <h4>LLM Blindness</h4>
+            <p>Agent never sees URL or confirmation code</p>
+          </div>
+          <span class="layer-badge highlight">Critical</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="7">
+          <span class="layer-num">07</span>
+          <div class="layer-content">
+            <h4>Gateway Egress Filtering</h4>
+            <p>LLM-injected malicious URLs redacted</p>
+          </div>
+          <span class="layer-badge highlight">Critical</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="8">
+          <span class="layer-num">08</span>
+          <div class="layer-content">
+            <h4>SPIFFE/SPIRE Identity</h4>
+            <p>Agent impersonation prevented</p>
+          </div>
+          <span class="layer-badge">Identity</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="9">
+          <span class="layer-num">09</span>
+          <div class="layer-content">
+            <h4>In-Memory + Zeroing</h4>
+            <p>Crash dumps and disk forensics defeated</p>
+          </div>
+          <span class="layer-badge">Runtime</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="10">
+          <span class="layer-num">10</span>
+          <div class="layer-content">
+            <h4>Audit Logging</h4>
+            <p>Non-repudiation and rogue agent detection</p>
+          </div>
+          <span class="layer-badge">Ops</span>
+        </div>
+        <div class="defense-layer" data-animate data-layer="11">
+          <span class="layer-num">11</span>
+          <div class="layer-content">
+            <h4>TEE Execution</h4>
+            <p>Host OS compromise neutralized (optional)</p>
+          </div>
+          <span class="layer-badge">Hardware</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">Features</span>
+        <h2 class="section-title">Why <span class="gradient-text">agent-Kryptos</span></h2>
+        <p class="section-subtitle">State-of-the-art cryptography, designed specifically for LLMs and ephemeral interactions.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" data-animate>
+          <div class="feature-icon cyan">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <h3>HPKE (RFC 9180)</h3>
+          <p>X25519 + HKDF-SHA256 + ChaCha20-Poly1305. Industry-standard hybrid encryption, not homebrew crypto.</p>
+        </div>
+        <div class="feature-card" data-animate>
+          <div class="feature-icon purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23" stroke-width="2.5"/></svg>
+          </div>
+          <h3>LLM Blindness</h3>
+          <p>The AI agent never sees the secret URL or confirmation code. Gateway controls the entire delivery flow.</p>
+        </div>
+        <div class="feature-card" data-animate>
+          <div class="feature-icon green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Ephemeral Keys</h3>
+          <p>Per-request keypairs. Generated, used once, destroyed. No key storage, no forward exposure.</p>
+        </div>
+        <div class="feature-card" data-animate>
+          <div class="feature-icon blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3>In-Memory Only</h3>
+          <p>Secrets live in zeroed Buffers. No disk, no logs, no serialization. Agent crash = clean slate.</p>
+        </div>
+        <div class="feature-card" data-animate>
+          <div class="feature-icon orange">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/><line x1="4" y1="4" x2="20" y2="20" stroke-width="2.5"/></svg>
+          </div>
+          <h3>Single-Use Retrieval</h3>
+          <p>Atomic GETDEL via Redis Lua script. First retrieval succeeds, all subsequent attempts get 410 Gone.</p>
+        </div>
+        <div class="feature-card" data-animate>
+          <div class="feature-icon red">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Anti-Phishing</h3>
+          <p>HMAC-signed URLs, human-readable confirmation codes, egress URL filtering. Social engineering blocked at every layer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Started Section -->
+  <section id="get-started">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">Quick Start</span>
+        <h2 class="section-title">Get Started in <span class="gradient-text">60 Seconds</span></h2>
+        <p class="section-subtitle">Integrate secure secret provisioning with just a few lines of code.</p>
+      </div>
+      <div class="terminal-wrapper" data-animate>
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">terminal</span>
+          </div>
+          <div class="terminal-body">
+            <pre><code><span class="comment"># Install agent-Kryptos</span>
+<span class="prompt">$</span> <span class="cmd">npm install</span> agent-kryptos
+
+<span class="comment"># Start the secret provisioning service</span>
+<span class="prompt">$</span> <span class="cmd">npx</span> agent-kryptos serve
+
+<span class="output">🔒 SPS Server running on http://localhost:3100</span>
+<span class="output">🔑 Gateway identity loaded (Ed25519)</span>
+<span class="output">✅ Ready to provision secrets</span>
+
+<span class="comment"># In your agent code</span>
+<span class="keyword">const</span> secret = <span class="keyword">await</span> agent.<span class="func">requestSecret</span>(<span class="string">"Stripe API Key"</span>);
+<span class="comment">// → Human receives secure link via Telegram</span>
+<span class="comment">// → Secret encrypted client-side with HPKE</span>
+<span class="comment">// → Agent decrypts in-memory, keys destroyed</span></code></pre>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a href="https://github.com" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+            <span>Read the Docs</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://github.com" class="btn btn-outline" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>Star on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-icon">🔐</span>
+            <span class="logo-text">agent-<span class="logo-highlight">Kryptos</span></span>
+          </a>
+          <p>Zero-knowledge secret provisioning for AI agents.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#defense">Security</a>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="#">Documentation</a>
+            <a href="#">GitHub</a>
+            <a href="#">License (MIT)</a>
+            <a href="#">Security Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Built with 🔐 for the age of AI agents</p>
+        <p class="footer-copyright">© 2026 agent-Kryptos. Open source under MIT License.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

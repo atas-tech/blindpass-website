@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kryptos.atas.tech/sitemap.xml

@@ -5,7 +5,7 @@
 The official landing page for **[agent-Kryptos](https://github.com/tuthan/agent-kryptos)** — a zero-knowledge secret provisioning system for AI agents.
 
 ![agent-Kryptos Preview](https://img.shields.io/badge/status-live-00f5d4?style=flat-square)
-![License](https://img.shields.io/badge/license-MIT-7b61ff?style=flat-square)
+
 
 ---
 
@@ -13,11 +13,15 @@ The official landing page for **[agent-Kryptos](https://github.com/tuthan/agent-
 
 This is a static, single-page marketing website that introduces agent-Kryptos to the world. It communicates the core value proposition, architecture, security model, and how to get started.
 
+The hero now supports two audience views:
+- **Human** — operator-first messaging and onboarding
+- **Agent** — API/runtime-oriented messaging with a request/response preview plus support highlights for agent-to-agent provisioning, x402 payments, and OpenClaw
+
 ### Sections
 
 | # | Section | Purpose |
 |---|---------|---------|
-| 1 | **Hero** | Tagline, CTAs, animated shield visual |
+| 1 | **Hero** | Human/agent toggle, CTAs, animated shield visual |
 | 2 | **Problem** | Why current secret handling in AI agents is broken |
 | 3 | **How It Works** | 5-step flow from keypair generation to secret retrieval |
 | 4 | **Architecture** | Component cards (SPS Server, Browser UI, Agent Skill, Gateway) |
@@ -53,11 +57,11 @@ npx serve .
 agent-kryptos-website/
 ├── index.html          # Complete single-page landing
 ├── style.css           # Design system & responsive styles
-├── script.js           # Particles, scroll animations, mobile menu
+├── script.js           # Particles, hero toggle, scroll animations, mobile menu
 ├── README.md           # This file
 ├── SPEC.md             # Design specification & maintenance guide
 ├── CONTRIBUTING.md     # Contribution guidelines
-├── LICENSE             # MIT License
+
 └── .gitignore
 ```
 
@@ -92,6 +96,7 @@ This is a static site that can be deployed anywhere:
 
 ---
 
-## License
+## Open Source
 
-[MIT](LICENSE)
+This project is open source.
+

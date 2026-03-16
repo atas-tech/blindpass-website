@@ -58,6 +58,12 @@ All cards use **glassmorphism**: translucent background with `backdrop-filter: b
 - **Primary** (`btn-primary`): Gradient fill, dark text, glow shadow on hover
 - **Outline** (`btn-outline`): Transparent with border, fill on hover
 
+### Hero
+- **Mode toggle**: pill switch between `Human` and `Agent` views
+- **Human view**: headline, supporting copy, CTA pair, trust stats
+- **Agent view**: headline, supporting copy, terminal/JSON preview, security note, support cards, capability badges
+- **Animated visual**: the existing particle background + shield/ring animation remains the persistent hero anchor across both views
+
 ### Section Headers
 Each section follows the pattern:
 1. **Label** — tiny uppercase tag with colored background (e.g., "THE PROBLEM")
@@ -107,6 +113,7 @@ These specific details must stay accurate:
 | Animation | Trigger | Duration | Easing |
 |-----------|---------|----------|--------|
 | Particle background | Page load | Continuous | Linear |
+| Hero mode toggle | Click / keyboard | 200ms | ease |
 | Scroll fade-in | Intersection Observer (10% visible) | 700ms | ease-out |
 | Card hover lift | Mouse hover | 200ms | ease |
 | Shield rings | Page load | 10–20s per rotation | Linear |
@@ -128,9 +135,9 @@ Grid children use incremental `transition-delay`:
 
 | Breakpoint | Layout Changes |
 |------------|---------------|
-| `> 1024px` | Full desktop layout, 2-col hero |
-| `768–1024px` | Single-col hero, 2-col grids |
-| `< 768px` | Mobile: single-col everything, hamburger menu, reduced padding |
+| `> 1024px` | Full desktop layout, 2-col hero with persistent animated visual |
+| `768–1024px` | Single-col hero, toggle centered, agent terminal card stays readable |
+| `< 768px` | Mobile: single-col everything, hamburger menu, reduced padding, stacked agent panel |
 | `< 480px` | Extra compact: tighter padding, smaller code font |
 
 ---
@@ -143,7 +150,7 @@ Grid children use incremental `transition-delay`:
 - [x] Proper heading hierarchy (h1 → h2 → h3 → h4)
 - [x] Semantic HTML5 (`<nav>`, `<section>`, `<footer>`)
 - [x] `alt` attributes on images (SVG inline — covered by `aria-label` if needed)
-- [ ] Add `<link rel="icon">` favicon
+- [x] Add `<link rel="icon">` favicon
 - [ ] Add Open Graph / Twitter Card meta tags
 - [ ] Add `sitemap.xml` and `robots.txt` for search engine crawling
 
@@ -151,7 +158,7 @@ Grid children use incremental `transition-delay`:
 
 ## 7. Future Enhancements
 
-- [ ] Add favicon (`.ico` + `.svg`)
+- [x] Add favicon (`.svg`)
 - [ ] Add Open Graph meta tags for social sharing
 - [ ] Add dark/light mode toggle
 - [ ] Add interactive sequence diagram (animated on scroll)

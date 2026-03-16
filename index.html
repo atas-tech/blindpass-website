@@ -25,6 +25,7 @@
   <meta name="twitter:description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval.">
   <meta name="twitter:image" content="https://kryptos.atas.tech/assets/og-image.jpg">
 
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -58,43 +59,145 @@
   <section id="hero">
     <div class="hero-container">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          Open Source · MIT License
+        <div class="hero-copy">
+          <div class="hero-mode-toggle" role="tablist" aria-label="Hero view toggle">
+            <button class="hero-mode-btn active" type="button" role="tab" aria-selected="true" aria-controls="hero-human-panel" id="hero-human-tab" data-hero-mode="human">
+              <span>Human</span>
+            </button>
+            <button class="hero-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="hero-agent-panel" id="hero-agent-tab" data-hero-mode="agent">
+              <span>Agent</span>
+            </button>
+          </div>
+          <div class="hero-badge" data-hero-content="human">
+            <span class="badge-dot"></span>
+            Operator-first handoff · Open Source
+          </div>
+
+          <div class="hero-badge hero-badge-agent" data-hero-content="agent" hidden>
+            <span class="badge-dot"></span>
+            Automomus secret delivery · Agent ↔ Gateway ↔ Agent
+
+          </div>
+          <h1 class="hero-title">
+            <span data-hero-content="human">
+              Ship agent secrets without shipping <span class="gradient-text">exposure.</span>
+            </span>
+            <span data-hero-content="agent" hidden>
+              Provision secrets to agents without exposing <span class="gradient-text">plaintext.</span>
+            </span>
+          </h1>
+          <p class="hero-description" data-hero-content="human">
+            Give developers and security teams a zero-knowledge way to hand off credentials. HPKE end-to-end encryption, in-memory only storage, and single-use retrieval keep sensitive values out of logs, prompts, and chat history.
+          </p>
+          <p class="hero-description" data-hero-content="agent" hidden>
+            Give autonomous workflows a verifiable delivery path across browser, gateway, and runtime boundaries. The agent gets what it needs, while the secret stays sealed until the final authorized retrieval step.
+          </p>
+          <div class="hero-buttons" data-hero-content="human">
+            <a href="#get-started" class="btn btn-primary">
+              <span>Get Started</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://github.com/tuthan/agent-kryptos" class="btn btn-outline" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>View Documentation</span>
+            </a>
+          </div>
+          <div class="hero-buttons" data-hero-content="agent" hidden>
+            <a href="#how-it-works" class="btn btn-primary">
+              <span>Explore API Flow</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#architecture" class="btn btn-outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M7 3v4M17 3v4M5 11h14v10H5z"/><path d="M9 15h6M9 19h4"/></svg>
+              <span>View Architecture</span>
+            </a>
+          </div>
+          <div class="hero-stats" id="hero-human-panel" role="tabpanel" aria-labelledby="hero-human-tab" data-hero-content="human">
+            <div class="stat">
+              <span class="stat-number">11</span>
+              <span class="stat-label">Security Layers</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">RFC 9180</span>
+              <span class="stat-label">HPKE Standard</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">0</span>
+              <span class="stat-label">Plaintext Exposure</span>
+            </div>
+          </div>
         </div>
-        <h1 class="hero-title">
-          Some secrets are meant to stay <span class="gradient-text">hidden.</span>
-          <br>Even from the agents that use them.
-        </h1>
-        <p class="hero-description">
-          Zero-knowledge secret provisioning for AI agents. HPKE end-to-end encryption. 
-          In-memory only. No plaintext ever touches the wire.
-        </p>
-        <div class="hero-buttons">
-          <a href="#get-started" class="btn btn-primary">
-            <span>Get Started</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="https://github.com/tuthan/agent-kryptos-website" class="btn btn-outline" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>View on GitHub</span>
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number">11</span>
-            <span class="stat-label">Security Layers</span>
+        <div class="hero-agent-panel" id="hero-agent-panel" role="tabpanel" aria-labelledby="hero-agent-tab" data-hero-content="agent" hidden>
+          <div class="hero-terminal-card">
+            <div class="hero-terminal-column">
+              <div class="hero-terminal-header">
+                <span>Terminal / Request</span>
+                <div class="hero-terminal-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <pre><code><span class="prompt">$</span> <span class="cmd">agent-kryptos request</span>
+<span class="comment"># agent asks for a one-time handoff</span>
+{
+  <span class="json-key">"secret"</span>: <span class="json-string">"OPENAI_API_KEY"</span>,
+  <span class="json-key">"ttl"</span>: <span class="json-number">180</span>,
+  <span class="json-key">"mode"</span>: <span class="json-string">"single-use"</span>
+}</code></pre>
+            </div>
+            <div class="hero-terminal-column hero-terminal-column-response">
+              <div class="hero-terminal-header">
+                <span>Structured Response</span>
+                <strong>200 OK</strong>
+              </div>
+              <pre><code>{
+  <span class="json-key">"proof"</span>: <span class="json-string">"hpke_sealed_payload"</span>,
+  <span class="json-key">"confirm_code"</span>: <span class="json-string">"482173"</span>,
+  <span class="json-key">"retrieve_once"</span>: <span class="json-string">"true"</span>
+}</code></pre>
+            </div>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number">RFC 9180</span>
-            <span class="stat-label">HPKE Standard</span>
+          <div class="hero-agent-support">
+            <div class="hero-agent-note">
+              <div class="hero-agent-note-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.09 9a3 3 0 115.82 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+              </div>
+              <div>
+                <strong>LLM blindness by design</strong>
+
+                <p>Agents trigger the flow, but secrets stay out of prompts, logs, and model context.</p>
+              </div>
+            </div>
+            <div class="hero-support-card">
+              <div class="hero-support-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h8"/><path d="M12 8l4 4-4 4"/><path d="M4 7h4v10H4z"/><path d="M16 7h4v10h-4z"/></svg>
+              </div>
+              <div>
+                <strong>Agent-to-Agent Provisioning</strong>
+                <p>Relay secrets safely across cooperating agents.</p>
+              </div>
+            </div>
+            <div class="hero-support-card">
+              <div class="hero-support-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 12h6"/><path d="M16 10h.01"/><path d="M18 14h.01"/></svg>
+              </div>
+              <div>
+                <strong>x402 Autonomous Payments</strong>
+                <p>Enable secure pay-per-request agent flows.</p>
+              </div>
+            </div>
+            <div class="hero-support-card">
+              <div class="hero-support-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14l4-4 4 4 4-4 4 4"/><path d="M4 18l4-4 4 4 4-4 4 4"/><path d="M4 10l4-4 4 4 4-4 4 4"/></svg>
+              </div>
+              <div>
+                <strong>OpenClaw Support</strong>
+                <p>Works with OpenClaw-style agent runtimes.</p>
+              </div>
+            </div>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number">0</span>
-            <span class="stat-label">Plaintext Exposure</span>
-          </div>
+
         </div>
       </div>
       <div class="hero-visual">
@@ -118,6 +221,26 @@
           <div class="data-stream stream-2"></div>
           <div class="data-stream stream-3"></div>
           <div class="data-stream stream-4"></div>
+        </div>
+        <div class="hero-visual-card visual-card-top" data-hero-content="human">
+          <span class="visual-card-label">Human View</span>
+          <strong>Human approves the handoff.</strong>
+          <p>Secrets stay sealed until the operator completes the browser-based confirmation step.</p>
+        </div>
+        <div class="hero-visual-card visual-card-bottom" data-hero-content="human">
+          <span class="visual-card-label">Zero Exposure</span>
+          <strong>Server never sees plaintext.</strong>
+          <p>Encryption happens client-side before the payload leaves the browser.</p>
+        </div>
+        <div class="hero-visual-card visual-card-top" data-hero-content="agent" hidden>
+          <span class="visual-card-label">Agent View</span>
+          <strong>Automation triggers the request.</strong>
+          <p>The runtime asks for a single-use handoff and waits for proof-backed retrieval.</p>
+        </div>
+        <div class="hero-visual-card visual-card-bottom" data-hero-content="agent" hidden>
+          <span class="visual-card-label">Controlled Delivery</span>
+          <strong>Plaintext appears only once.</strong>
+          <p>Single-use retrieval and expiring proof windows reduce reuse and replay risk.</p>
         </div>
       </div>
     </div>
@@ -502,14 +625,15 @@
             <h4>Resources</h4>
             <a href="#">Documentation</a>
             <a href="https://github.com/tuthan/agent-kryptos">GitHub</a>
-            <a href="#">License (MIT)</a>
+            <a href="#">Open Source</a>
             <a href="#">Security Policy</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <p>Built with 🔐 for the age of AI agents</p>
-        <p class="footer-copyright">© 2026 tuthan / agent-Kryptos. Open source under MIT License.</p>
+        <p class="footer-copyright">© 2026 tuthan / agent-Kryptos. Open source project.</p>
+
         <p class="footer-contact">Contact: <a href="https://github.com/tuthan">github: tuthan</a> — <a href="mailto:hung@atas.tech">email: hung@atas.tech</a></p>
       </div>
     </div>

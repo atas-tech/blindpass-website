@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initScrollAnimations();
     initMobileMenu();
+    initHeroMode();
 });
 
 /* =============================================
@@ -168,4 +169,71 @@ function initMobileMenu() {
             btn.classList.remove('active');
         });
     });
+}
+
+/* =============================================
+   Hero Mode Toggle
+   ============================================= */
+
+function initHeroMode() {
+    const buttons = Array.from(document.querySelectorAll('[data-hero-mode]'));
+    const content = Array.from(document.querySelectorAll('[data-hero-content]'));
+    const hero = document.getElementById('hero');
+    const heroContainer = document.querySelector('.hero-container');
+    let transitionTimer;
+
+    if (!buttons.length || !content.length) return;
+
+    function setMode(mode, options = {}) {
+        const { focusButton = false } = options;
+
+        buttons.forEach((button) => {
+            const isActive = button.dataset.heroMode === mode;
+            button.classList.toggle('active', isActive);
+            button.setAttribute('aria-selected', String(isActive));
+            button.tabIndex = isActive ? 0 : -1;
+
+            if (isActive && focusButton) {
+                button.focus({ preventScroll: true });
+            }
+        });
+
+        content.forEach((element) => {
+            element.hidden = element.dataset.heroContent !== mode;
+        });
+
+        if (heroContainer) {
+            heroContainer.classList.toggle('hero-mode-agent', mode === 'agent');
+        }
+
+        document.body.classList.toggle('hero-mode-agent', mode === 'agent');
+
+        if (hero) {
+
+            hero.classList.remove('mode-transition');
+            void hero.offsetWidth;
+            hero.classList.add('mode-transition');
+            window.clearTimeout(transitionTimer);
+            transitionTimer = window.setTimeout(() => {
+                hero.classList.remove('mode-transition');
+            }, 340);
+        }
+    }
+
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            setMode(button.dataset.heroMode, { focusButton: true });
+        });
+
+        button.addEventListener('keydown', (event) => {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+
+            event.preventDefault();
+            const direction = event.key === 'ArrowRight' ? 1 : -1;
+            const nextIndex = (index + direction + buttons.length) % buttons.length;
+            setMode(buttons[nextIndex].dataset.heroMode, { focusButton: true });
+        });
+    });
+
+    setMode('human');
 }

@@ -2,7 +2,7 @@
 
 > *"Some secrets are meant to stay hidden. Even from the agents that use them."*
 
-The official landing page for **[agent-Kryptos](https://github.com/tuthan/agent-kryptos)** — a zero-knowledge secret provisioning system for AI agents.
+The official landing page for **[agent-Kryptos](https://github.com/atas-tech/agent-kryptos)** — a zero-knowledge secret provisioning system for AI agents.
 
 ![agent-Kryptos Preview](https://img.shields.io/badge/status-live-00f5d4?style=flat-square)
 
@@ -38,7 +38,7 @@ No build tools required — this is a static site.
 
 ```bash
 # Clone
-git clone https://github.com/tuthan/agent-kryptos-website.git
+git clone https://github.com/atas-tech/agent-kryptos-website.git
 cd agent-kryptos-website
 
 # Serve locally
@@ -92,7 +92,7 @@ This is a static site that can be deployed anywhere:
 
 ## Related
 
-- **[agent-Kryptos Core](https://github.com/tuthan/agent-kryptos)** — The actual SPS system (server, agent skill, gateway)
+- **[agent-Kryptos Core](https://github.com/atas-tech/agent-kryptos)** — The actual SPS system (server, agent skill, gateway)
 
 ---
 

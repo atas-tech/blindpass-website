@@ -5,7 +5,7 @@ Thank you for your interest in contributing! This is a simple static site, so ge
 ## Development Setup
 
 ```bash
-git clone https://github.com/tuthan/agent-kryptos-website.git
+git clone https://github.com/atas-tech/agent-kryptos-website.git
 cd agent-kryptos-website
 python3 -m http.server 8080
 # Open http://localhost:8080
@@ -28,7 +28,7 @@ No build tools, no dependencies, no frameworks. Just HTML, CSS, and JS.
 
 ### Content Updates
 - Keep technical claims accurate — see SPEC.md §3 "Key Claims to Verify"
-- Reference source documents in the core `agent-kryptos` repo
+- Reference source documents in the core `agent-kryptos` repo (https://github.com/atas-tech/agent-kryptos)
 
 ### Adding a New Section
 1. Add HTML to `index.html` following the existing section pattern

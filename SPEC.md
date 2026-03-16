@@ -93,7 +93,7 @@ The website content is sourced from these project files:
 | Features | `Brainstorm Secure Secret System.md` §3 |
 | Get Started | `package.json` scripts + `SKILL.md` |
 
-**When updating features or architecture in the core `agent-kryptos` repo, update the corresponding section here.**
+**When updating features or architecture in the core `agent-kryptos` repo (https://github.com/atas-tech/agent-kryptos), update the corresponding section here.**
 
 ### Key Claims to Verify
 

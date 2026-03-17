@@ -4,6 +4,13 @@
 
 ---
 
+## 0. UI Design
+
+This project uses Stitch for rapid design iterations and conceptual mockups.
+- **Stitch Project ID**: `12997262989494330328`
+
+---
+
 ## 1. Design System
 
 ### Color Palette

@@ -1,0 +1,714 @@
+# Landing Page Improvement Plan
+
+## Goal
+
+Expand the landing page from a Phase 1/2 security story into a fuller product story that reflects the current `agent-kryptos` scope:
+
+- Human → Agent secret delivery
+- Agent → Agent exchange
+- Hosted workspace control plane
+
+---
+
+## Editorial Guardrails
+
+- Market **shipped** capabilities as shipped.
+- Market **planned / in-progress** capabilities only when clearly labeled `Planned`, `In Progress`, or `Roadmap`.
+- Keep security language precise. Prefer concrete claims like `HPKE`, `single-use retrieval`, and `in-memory only` over vague claims like `unbreakable` or `production-ready`.
+- Prefer one clear product hierarchy on-page: `Open Source Core` first, then `Hosted Platform`, instead of mixing roadmap items into the core story.
+- If using screenshots or mocks, distinguish between `real UI` and `conceptual visual` so the page does not imply features are live when they are still planned.
+
+---
+
+## Resolved Product Decisions
+
+- The landing page should serve **both** audiences: open-source adopters and hosted-product buyers.
+- A public-facing hosted CTA should be present on the page.
+- Pricing should appear on the landing page.
+- `x402` should be treated as part of the product story, not hidden as a niche footnote.
+- Use a **conceptual mock first** for the dashboard / hosted-product visual instead of waiting for a production screenshot.
+- **Section Consolidation:** Create a single, robust **Platform** section using tabs/accordions to house `Dashboard`, `Policy & Approvals`, and `Deployment Options` to avoid page fatigue.
+- **Navigation:** Maintain a flat top navigation limited to the core pillars (`Problem`, `Use Cases`, `Platform`, `Security`, `Pricing`, `Docs`).
+- **Primary CTA & Terminal:** Keep the terminal snippet in the "Final CTA" section but add split paths directly below it (`Read Docs` → repo README, `Self-Host` → compose guide, `Explore Hosted` → waitlist/live dashboard).
+- **SPIFFE Claim:** Rename Layer 08 to "Pluggable Identity (SPIFFE/SPIRE Ready)" to keep the "11 Layers" stat intact.
+- **Hero Toggle:** Drop the Human/Agent toggle from the Hero. Present a unified message in the Hero and reserve the interactive toggle for the `How It Works` section.
+- **x402 Display:** Display `x402` as an advanced capability card inside `Platform` and a single explanatory line in `Pricing`.
+
+### Implications
+
+- The page should clearly separate `Open Source Core` from `Hosted Platform`, but market both on the same page.
+- CTA structure should support two real entry paths: open source docs / self-hosting and hosted exploration.
+- Pricing should likely include both:
+  - workspace pricing for hosted plans
+  - machine-payment / x402 language as an advanced capability
+- Mock visuals are acceptable in the first pass, but they should not imply that every depicted hosted screen is already live.
+
+---
+
+## Improvement Plan
+
+### 1. Reposition the page around the full product surface · `code-only`
+
+The current site still centers mostly on secret handoff. Update messaging to cover three pillars:
+
+- `Human → Agent`
+- `Agent → Agent`
+- `Hosted workspace control plane`
+
+The hero foundation already exists, but the current Human/Agent toggle should be removed from the hero and the interaction moved down into `How It Works`.
+
+Reference:
+
+- `/home/hvo/Projects/agent-kryptos/README.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3A - Hosted Platform.md`
+
+---
+
+### 2. Redesign the information architecture · `stitch`
+
+Keep hero, problem, and security, but insert new sections for:
+
+- `Use Cases`
+- `Platform` (dashboard, policy, approvals, deployment)
+- `Pricing`
+
+These are entirely new sections with no existing layout pattern. Stitch is needed to nail down card/grid style, visual hierarchy, and how they interleave with existing sections.
+
+> **⚠ Page-length risk** — the current page is already 7 sections. Adding 5+ new full-width sections pushes toward 12+. Consider whether some of these should collapse into tabs/accordions inside a single "Platform" section rather than all being separate scroll sections. Decide this in Stitch before coding.
+>
+> **Resolved direction** — `Hosted Dashboard`, `Policy & Approvals`, and `Deployment Options` belong inside one broader `Platform` section. `Pricing` remains separate.
+
+Reference:
+
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3B - UI & Operations.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
+
+---
+
+### 3. Add a dedicated agent-to-agent section · `stitch`
+
+> **Folded into §4 How It Works** — the section-by-section plan already places agent-to-agent as a second tab/toggle inside How It Works. This item stays as a content reference, but is not a standalone section.
+
+Content to include in the agent-to-agent flow tab:
+
+- requester agent
+- fulfiller agent
+- policy check
+- approval path
+- single-use retrieval
+
+A sequence diagram or flow graphic would be ideal — design in Stitch first.
+
+Reference:
+
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
+
+---
+
+### 4. Add a hosted operations section · `stitch`
+
+> **Folded into §5 Platform** — the section-by-section plan consolidates dashboard, operations, and deployment into one Platform section. This item stays as a content reference.
+
+Content to include inside the Platform section:
+
+- agents
+- members
+- audit logs
+- approvals
+- billing
+- quotas
+
+Needs Stitch design to decide between dashboard screenshot mock, icon grid, or feature list layout.
+
+Reference:
+
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3A - Hosted Platform.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3B - UI & Operations.md`
+
+---
+
+### 5. Add a policy engine section · `stitch`
+
+Explain the policy model as a key differentiator:
+
+- secret registry
+- trust rings
+- allow / deny / pending approval
+- tenant-scoped policy management
+- versioned and audited policy changes
+
+Trust rings and allow/deny/pending states are conceptually dense. A diagram or visual (concentric ring graphic, mini policy table) would land much better than text cards. Stitch is needed to explore visual treatments.
+
+Reference:
+
+- `/home/hvo/Projects/agent-kryptos/docs/guides/policy.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
+
+---
+
+### 6. Rewrite the CTA strategy · `code-only`
+
+Replace the current generic `Get Started in 60 Seconds` block with clearer entry points:
+
+- `Read Docs`
+- `Self-Host`
+- `Explore Hosted`
+
+Because the page now serves both OSS and hosted audiences, the CTA area should explicitly split those paths rather than assuming one generic onboarding flow.
+
+The existing `cta-row` layout can handle 3 buttons with minor CSS adjustment.
+
+> **Decision resolved** — keep the current terminal block to preserve developer-first credibility, but add the three split path buttons below it.
+>
+> **Destination resolved**:
+>
+> - `Read Docs` → repo README or docs index
+> - `Self-Host` → Docker Compose deployment guide
+> - `Explore Hosted` → waitlist form or live dashboard
+
+Reference:
+
+- `/home/hvo/Projects/agent-kryptos/README.md`
+
+---
+
+### 7. Tighten factual claims · `code-only`
+
+Keep strong, defensible claims:
+
+- `HPKE (RFC 9180)`
+- `LLM blindness`
+- `single-use retrieval`
+- `in-memory only`
+
+Avoid:
+
+- presenting SPIFFE as the default identity model
+- implying full production hardening is already complete
+- overclaiming setup simplicity where the docs are still evolving
+
+> **SPIFFE cascading change resolved** — Defense Layer 08 will be softened to "Pluggable identity (SPIFFE/SPIRE ready)". This keeps the hero stat "11 Security Layers" intact while remaining factually honest that custom JWTs are the default.
+
+Reference:
+
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
+- `/home/hvo/Projects/agent-kryptos/docs/security/Security Audit.md`
+
+---
+
+### 8. Add proof surfaces · `stitch`
+
+Make the page feel like a product site, not only a security concept page. Add:
+
+- dashboard screenshot or mock
+- simplified sequence diagram
+- compact comparison: `Open Source Core` vs `Hosted Platform`
+
+The comparison table and sequence diagram are new visual components that don't exist in the current design system. Design in Stitch first.
+
+> **Resolved direction** — use a conceptual mock in the first pass. It should visually sell the hosted platform, but avoid depicting obviously unshipped or misleading states as if they are already live.
+
+---
+
+### 9. Add pricing section · `stitch`
+
+Pricing is now an explicit part of the page strategy.
+
+Recommended structure:
+
+- hosted workspace pricing card(s)
+- short comparison of `Free` vs `Standard`
+- short note that advanced machine-payment flows can use `x402`
+
+This section should stay simple. Avoid trying to explain every billing edge case on the landing page.
+
+> **Content rule** — keep recurring hosted pricing and `x402` machine payments visually distinct so users do not confuse workspace subscription pricing with per-request autonomous payments.
+
+---
+
+### 10. Update navigation · `code-only`
+
+Adding new sections means the nav links grow significantly. We will maintain a flat top navigation but limit the anchors to the core pillars:
+
+- `Problem`
+- `Use Cases`
+- `Platform`
+- `Security`
+- `Pricing`
+- `Docs`
+
+This avoids the need for a complex dropdown menu and fits well on desktop and mobile.
+
+---
+
+## Discussion Points (Resolved)
+
+1. **Page-length risk** — Resolved: Collapse new items (`Dashboard`, `Policy & Approvals`, `Deployment Options`) into tabs/accordions within a single "Platform" section.
+2. **Navigation overflow** — Resolved: Keep flat anchor list limited to core pillars (`Problem`, `Use Cases`, `Platform`, `Security`, `Pricing`, `Docs`).
+3. **SPIFFE cascade** — Resolved: Soften Layer 08 to "Pluggable Identity" to keep the 11-layer count.
+4. **Pricing section placement** — Resolved: Keep `Pricing` as its own section, and put a note about `x402` inside it.
+5. **Quick-start terminal decision** — Resolved: Keep the terminal snippet in the final CTA but update the buttons below it.
+6. **Hero Toggle** — Resolved: Drop the toggle from the hero, using a unified message instead. Save the toggle for the "How It Works" section.
+
+---
+
+## Questions To Resolve Before Design
+
+All strategic questions are now resolved:
+
+1. The page should sell both the **open source project** and the **hosted product**.
+2. A public-facing hosted CTA should be present.
+3. `x402` should be visible as part of the product story (badge in `Platform`, note in `Pricing`).
+4. Use a conceptual mock first for hosted visuals.
+5. Pricing should appear on the page as its own section.
+6. CTA destination types defined (`Read Docs` -> README/docs, `Self-Host` -> compose guide, `Explore Hosted` -> waitlist/dashboard); exact URLs still need wiring.
+7. Quick-start terminal remains at the bottom, with split paths below it.
+8. Hero presented with a unified message (no toggle).
+
+---
+
+## Proposed Landing Page Structure
+
+This is the recommended first-pass structure for the rewrite of `index.html`.
+
+### Recommended Section Order
+
+1. Hero
+2. Problem
+3. Use Cases
+4. How It Works
+5. Platform
+6. Security
+7. Pricing
+8. Open Source vs Hosted
+9. Final CTA
+10. Footer
+
+This keeps the page focused while still covering both OSS and hosted audiences. It also avoids turning every new idea into a separate full-width section.
+
+### Section-by-Section Plan
+
+#### 1. Hero
+
+Status:
+
+- Keep the existing hero foundation
+- Rewrite the copy
+- Drop the Human / Agent toggle
+
+Purpose:
+
+- establish the core value proposition
+- make it clear the product supports both open source and hosted usage
+- present immediate paths for OSS and hosted visitors
+
+Recommended content:
+
+- headline centered on secure secret delivery for agents and teams
+- subhead mentioning Human → Agent, Agent → Agent, and hosted workspace control
+- primary CTA for hosted
+- secondary CTA for docs or self-hosting
+- compact trust row under hero:
+  - `HPKE (RFC 9180)`
+  - `Single-use retrieval`
+  - `In-memory only`
+  - `Open Source + Hosted`
+
+Recommended note:
+
+- do not overload the hero with too many roadmap items
+- `x402` can appear as a small support badge, not the main headline
+
+#### 2. Problem
+
+Status:
+
+- Keep the current section
+- Tighten copy
+
+Purpose:
+
+- explain why agent secret handling is broken today
+- build urgency before introducing the broader product surface
+
+Recommended content:
+
+- keep 3-4 problem cards
+- tighten toward actual leakage vectors:
+  - chat and prompt context
+  - config/env sprawl
+  - middleware/plaintext transit
+  - missing expiry / uncontrolled reuse
+
+Recommended edit:
+
+- shorten card copy so the page moves faster into the solution and platform story
+
+#### 3. Use Cases
+
+Status:
+
+- New section
+
+Purpose:
+
+- explain the three product modes in one glance
+
+Recommended cards:
+
+- `Human → Agent`
+  - secure human handoff through browser encryption and one-time retrieval
+- `Agent → Agent`
+  - policy-checked exchange between requester and fulfiller agents
+- `Hosted Teams`
+  - operators manage agents, members, approvals, quotas, and billing
+
+Recommended design:
+
+- one 3-column card row on desktop
+- each card has a short “best for” line
+
+Why this matters:
+
+- this is where the landing page stops being just a crypto explainer
+
+#### 4. How It Works
+
+Status:
+
+- Keep the section
+- Expand it from only Human → Agent into dual-flow storytelling
+
+Purpose:
+
+- make the mechanics concrete
+
+Recommended structure:
+
+- tabs or toggle inside the section:
+  - `Human → Agent flow`
+  - `Agent → Agent flow`
+
+Human → Agent flow:
+
+- request created
+- secure link / confirmation step
+- browser-side encryption
+- single-use retrieval
+
+Agent → Agent flow:
+
+- requester asks SPS
+- fulfiller is authorized by policy
+- approval is checked if required
+- ciphertext is submitted once
+- requester retrieves once
+
+Recommended note:
+
+- keep diagrams simplified for marketing
+- avoid pasting raw API routes into the page body
+
+#### 5. Platform
+
+Status:
+
+- New consolidated section
+
+Purpose:
+
+- present the hosted product without scattering it across multiple sections
+
+Recommended subsections inside one section:
+
+- hosted dashboard mock
+- operations capability list
+- policy and approvals panel
+- deployment options
+
+Recommended content:
+
+- dashboard mock labeled conceptual
+- key ops bullets:
+  - agent enrollment
+  - member management
+  - audit log
+  - approvals inbox
+  - billing and quotas
+- policy area:
+  - secret registry
+  - trust rings
+  - allow / deny / pending approval
+  - audited policy changes
+- deployment modes:
+  - open source / self-hosted
+  - hosted workspace platform
+
+Recommended decision:
+
+- fold `Hosted Dashboard`, `Policy & Approvals`, and `Deployment Options` together here
+- do not split them into separate full-width sections in the first pass
+
+#### 6. Security
+
+Status:
+
+- Keep current defense section
+- simplify and correct claims
+
+Purpose:
+
+- preserve the security-first identity of the project
+
+Recommended changes:
+
+- keep layered defense framing
+- reduce density if needed
+- correct SPIFFE positioning:
+  - default identity story should be SPS-trusted JWTs
+  - SPIFFE should be optional / advanced, not default
+
+Recommended structure:
+
+- either keep 11 layers with corrected wording
+- or reduce to a more readable top 6-8 layers if the section feels too long
+
+Recommendation:
+
+- if the full 11-layer stack stays, tighten each description to one short line
+
+#### 7. Pricing
+
+Status:
+
+- New section
+
+Purpose:
+
+- give hosted visitors a concrete buying frame
+- make `x402` visible without confusing it with workspace subscriptions
+
+Recommended structure:
+
+- `Free` hosted card
+- `Standard` hosted card
+- small side note or sub-block for `x402 machine payments`
+
+Recommended content direction:
+
+- hosted pricing is for workspace access and management
+- `x402` is for advanced autonomous per-request payment flows
+
+Important separation:
+
+- recurring workspace pricing and per-request machine payments must not be presented as the same thing
+
+#### 8. Open Source vs Hosted
+
+Status:
+
+- New section or lower-page comparison block
+
+Purpose:
+
+- help visitors self-select quickly
+
+Recommended columns:
+
+- `Open Source Core`
+- `Hosted Platform`
+
+Suggested comparison rows:
+
+- deploy yourself
+- browser encryption
+- agent-to-agent exchange
+- dashboard and admin UX
+- billing and quotas
+- policy management
+- hosted onboarding
+
+Recommended note:
+
+- if the page becomes too long, this can collapse into a compact comparison card inside Pricing or Final CTA
+
+Boundary with Pricing (§8):
+
+- §8 Pricing owns **plan labels and price points** (Free vs Standard, x402 note)
+- §9 Comparison owns **capability scope** (what each option includes)
+- avoid repeating billing/quota details in both sections
+
+#### 9. Final CTA
+
+Status:
+
+- Replace current quick-start section
+
+Purpose:
+
+- give both audiences a next step
+
+Recommended structure:
+
+- left: OSS path
+  - `Read Docs`
+  - `Self-Host`
+- right: hosted path
+  - `Explore Hosted`
+
+Recommended content:
+
+- remove the current “Get Started in 60 Seconds” framing unless the onboarding really supports that claim
+- optional terminal snippet can remain only if it still helps the OSS story and does not dominate the section
+
+Recommendation:
+
+- prefer a split-path CTA over the current single terminal-led CTA block
+
+#### 10. Footer
+
+Status:
+
+- Keep
+- expand resource quality
+
+Recommended links:
+
+- docs
+- core repo
+- hosted product
+- security / audit references
+- deployment / self-hosting
+
+### Mapping From Current Sections
+
+Keep and rewrite:
+
+- `Hero`
+- `Problem`
+- `How It Works`
+- `Defense`
+- `Footer`
+
+Keep but repurpose:
+
+- `Architecture` → fold into `Use Cases` or `Platform`
+- `Features` → fold into `Platform` or comparison content
+- `Get Started` → replace with `Final CTA`
+
+Add net-new:
+
+- `Use Cases`
+- `Platform`
+- `Pricing`
+- `Open Source vs Hosted`
+
+### Recommended Navigation Model
+
+Keep the top nav short. Recommended anchors:
+
+- `Problem`
+- `Use Cases`
+- `Platform`
+- `Security`
+- `Pricing`
+- `Docs`
+
+Skipped from nav (reachable by scrolling):
+
+- `How It Works` — flows naturally from Use Cases; adding it crowds the bar without improving navigation
+- policy / approvals content sits under Platform visually; giving it a nav slot implies it is a top-level product pillar
+- `Open Source vs Hosted` — comparison content near the bottom; visitors reach it through Pricing or the final CTA
+
+Notes:
+
+- if nav starts to feel crowded, link `Docs` externally and keep only 5 on-page anchors
+
+### Recommended Copy Hierarchy
+
+Top-of-page hierarchy:
+
+1. secure secret delivery for agents
+2. support for both human and autonomous workflows
+3. hosted control plane for teams
+
+Lower-page hierarchy:
+
+1. how the system works
+2. how teams operate it
+3. how policy and pricing fit
+
+### Recommended Treatment For x402
+
+`x402` should be visible, but not allowed to dominate the page.
+
+Recommended placement:
+
+- small badge or callout in hero support area
+- one capability card inside `Platform` or `Pricing`
+- one line in the comparison / pricing area explaining it as an advanced machine-payment path
+
+Avoid:
+
+- making the page look like a crypto product first
+- merging `x402` language into the main hosted workspace pricing cards
+
+---
+
+## Suggested Execution Order
+
+### Phase 0 — Content Audit
+
+1. Classify each current and proposed claim as `shipped`, `in progress`, or `planned`
+2. ~~Decide the primary page audience: OSS adopters, hosted buyers, or both~~ → **resolved: both**
+3. ~~Resolve the CTA destinations and whether hosted should be public-facing yet~~ → **resolved at the strategy level: hosted is public-facing and destination types are defined; exact URLs still need wiring during implementation**
+4. ~~Decide whether pricing appears anywhere on-page~~ → **resolved: yes**
+
+### Phase A — Stitch Design (batch)
+
+Design these together as they form the "new product story" block:
+
+1. Use Cases section layout (item 2)
+2. Agent-to-Agent section with flow/sequence visual (item 3)
+3. Hosted Dashboard section with dashboard mock (item 4)
+4. Policy Engine panel within Platform, with trust-ring visual (item 5)
+5. Deployment Options / Platform section layout (item 2)
+6. Pricing section or Pricing-within-Platform layout (item 9)
+7. OSS vs Hosted comparison component (item 8)
+8. Design the internal `Platform` layout pattern: tabs, accordions, or stacked panels
+
+### Phase B — Code Implementation
+
+1. Update hero and navigation copy (items 1, 10)
+2. Implement Stitch-approved new sections (items 2–5)
+3. Implement Deployment Options / Platform structure from Phase A
+4. Implement pricing section / pricing block (item 9)
+5. Add proof surfaces: mock, diagram, comparison (item 8)
+6. Replace quick-start / CTA section (item 6)
+7. **Remove old Architecture and Features sections** — content is folded into Use Cases, Platform, and comparison; leaving them in place alongside the new sections would duplicate information
+8. Audit all copy claims against core docs (item 7)
+9. Update `SPEC.md` with new sections, tokens, and components
+
+### Phase C — Verification
+
+1. Review the full page for section bloat and nav overflow on desktop and mobile
+2. Check that every CTA has a real destination
+3. Re-verify all security and hosted-product claims against the core repo docs
+4. Confirm pricing language does not blur hosted subscriptions and `x402` machine payments
+5. Confirm screenshots or mocks are labeled appropriately if they include planned functionality
+
+---
+
+## Source Notes
+
+Primary source documents reviewed:
+
+- `/home/hvo/Projects/agent-kryptos/README.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3A - Hosted Platform.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3B - UI & Operations.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3D - Autonomous Payments & Crypto Billing.md`
+- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
+- `/home/hvo/Projects/agent-kryptos/docs/guides/policy.md`
+- `/home/hvo/Projects/agent-kryptos/docs/security/Security Audit.md`

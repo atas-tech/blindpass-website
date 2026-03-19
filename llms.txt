@@ -1,0 +1,24 @@
+# agent-Kryptos
+
+Zero-knowledge secret provisioning for AI agents.
+
+## Overview
+agent-Kryptos is a secure handoff mechanism that allows developers and security teams to deliver credentials to AI agents without exposing plaintext to logs, prompts, or the LLM itself. It uses HPKE (Hybrid Public Key Encryption) for end-to-end security.
+
+## Core Features
+- **Zero-Knowledge Architecture**: The server (SPS) never sees the plaintext secret.
+- **HPKE (RFC 9180)**: Industry-standard hybrid encryption using X25519, HKDF-SHA256, and ChaCha20-Poly1305.
+- **Single-Use Retrieval**: Secrets are automatically deleted from the server after the first retrieval.
+- **Short-Lived TTL**: Secret requests expire within 3 minutes by default.
+- **LLM Blindness**: AI agents trigger the flow but never see the secure URL or confirmation code.
+
+## Components
+- **SPS Server**: A Fastify/Redis service for orchestrating secret requests.
+- **Agent Skill**: Client-side logic for HPKE keypair generation and secure retrieval.
+- **Browser UI**: A zero-dependency page for human-in-the-loop secret entry and encryption.
+- **Gateway**: A secure boundary that Redacts/Filters URLs and manages identity.
+
+## Links
+- Website: https://kryptos.atas.tech/
+- GitHub: https://github.com/atas-tech/agent-kryptos
+- Documentation: https://github.com/atas-tech/agent-kryptos#readme

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Expand the landing page from a Phase 1/2 security story into a fuller product story that reflects the current `agent-kryptos` scope:
+Expand the landing page from a Phase 1/2 security story into a fuller product story that reflects the current `blindpass` scope:
 
 - Human → Agent secret delivery
 - Agent → Agent exchange
@@ -59,9 +59,9 @@ The hero foundation already exists, but the current Human/Agent toggle should be
 
 Reference:
 
-- `/home/hvo/Projects/agent-kryptos/README.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3A - Hosted Platform.md`
+- `/home/hvo/Projects/blindpass/README.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Brainstorm Secure Secret System.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3A - Hosted Platform.md`
 
 ---
 
@@ -81,8 +81,8 @@ These are entirely new sections with no existing layout pattern. Stitch is neede
 
 Reference:
 
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3B - UI & Operations.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3B - UI & Operations.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
 
 ---
 
@@ -102,7 +102,7 @@ A sequence diagram or flow graphic would be ideal — design in Stitch first.
 
 Reference:
 
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Brainstorm Secure Secret System.md`
 
 ---
 
@@ -123,8 +123,8 @@ Needs Stitch design to decide between dashboard screenshot mock, icon grid, or f
 
 Reference:
 
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3A - Hosted Platform.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3B - UI & Operations.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3A - Hosted Platform.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3B - UI & Operations.md`
 
 ---
 
@@ -142,8 +142,8 @@ Trust rings and allow/deny/pending states are conceptually dense. A diagram or v
 
 Reference:
 
-- `/home/hvo/Projects/agent-kryptos/docs/guides/policy.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
+- `/home/hvo/Projects/blindpass/docs/guides/policy.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
 
 ---
 
@@ -169,7 +169,7 @@ The existing `cta-row` layout can handle 3 buttons with minor CSS adjustment.
 
 Reference:
 
-- `/home/hvo/Projects/agent-kryptos/README.md`
+- `/home/hvo/Projects/blindpass/README.md`
 
 ---
 
@@ -192,8 +192,8 @@ Avoid:
 
 Reference:
 
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
-- `/home/hvo/Projects/agent-kryptos/docs/security/Security Audit.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Brainstorm Secure Secret System.md`
+- `/home/hvo/Projects/blindpass/docs/security/Security Audit.md`
 
 ---
 
@@ -704,11 +704,11 @@ Design these together as they form the "new product story" block:
 
 Primary source documents reviewed:
 
-- `/home/hvo/Projects/agent-kryptos/README.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Brainstorm Secure Secret System.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3A - Hosted Platform.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3B - UI & Operations.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3D - Autonomous Payments & Crypto Billing.md`
-- `/home/hvo/Projects/agent-kryptos/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
-- `/home/hvo/Projects/agent-kryptos/docs/guides/policy.md`
-- `/home/hvo/Projects/agent-kryptos/docs/security/Security Audit.md`
+- `/home/hvo/Projects/blindpass/README.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Brainstorm Secure Secret System.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3A - Hosted Platform.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3B - UI & Operations.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3D - Autonomous Payments & Crypto Billing.md`
+- `/home/hvo/Projects/blindpass/docs/architecture/Phase 3E - Hosted Hardening, Ecosystem & Launch.md`
+- `/home/hvo/Projects/blindpass/docs/guides/policy.md`
+- `/home/hvo/Projects/blindpass/docs/security/Security Audit.md`

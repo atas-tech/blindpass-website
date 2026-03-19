@@ -1,17 +1,17 @@
-# agent-Kryptos Website
+# BlindPass Website
 
 > *"Some secrets are meant to stay hidden. Even from the agents that use them."*
 
-The official landing page for **[agent-Kryptos](https://github.com/atas-tech/agent-kryptos)** — a zero-knowledge secret provisioning system for AI agents.
+The official landing page for **[BlindPass](https://github.com/atas-tech/blindpass)** — the zero-knowledge bridge for AI agent secrets.
 
-![agent-Kryptos Preview](https://img.shields.io/badge/status-live-00f5d4?style=flat-square)
+![BlindPass Preview](https://img.shields.io/badge/status-live-00f5d4?style=flat-square)
 
 
 ---
 
 ## Overview
 
-This is a static, single-page marketing website that introduces agent-Kryptos to the world. It communicates the core value proposition, architecture, security model, and how to get started.
+This is a static, single-page marketing website that introduces BlindPass to the world. It communicates the core value proposition, architecture, security model, and how to get started.
 
 The hero now supports two audience views:
 - **Human** — operator-first messaging and onboarding
@@ -38,8 +38,8 @@ No build tools required — this is a static site.
 
 ```bash
 # Clone
-git clone https://github.com/atas-tech/agent-kryptos-website.git
-cd agent-kryptos-website
+git clone https://github.com/atas-tech/blindpass-website.git
+cd blindpass-website
 
 # Serve locally
 python3 -m http.server 8080
@@ -54,7 +54,7 @@ npx serve .
 ## Project Structure
 
 ```
-agent-kryptos-website/
+blindpass-website/
 ├── index.html          # Complete single-page landing
 ├── style.css           # Design system & responsive styles
 ├── script.js           # Particles, hero toggle, scroll animations, mobile menu
@@ -92,7 +92,7 @@ This is a static site that can be deployed anywhere:
 
 ## Related
 
-- **[agent-Kryptos Core](https://github.com/atas-tech/agent-kryptos)** — The actual SPS system (server, agent skill, gateway)
+- **[BlindPass Core](https://github.com/atas-tech/blindpass)** — The actual SPS system (server, agent skill, gateway)
 
 ---
 

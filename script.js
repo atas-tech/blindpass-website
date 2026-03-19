@@ -1,5 +1,5 @@
 /* =============================================
-   agent-Kryptos — Interactivity & Animations
+   BlindPass — Interactivity & Animations
    ============================================= */
 
 document.addEventListener('DOMContentLoaded', () => {

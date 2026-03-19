@@ -1,12 +1,12 @@
-# Contributing to agent-Kryptos Website
+# Contributing to BlindPass Website
 
 Thank you for your interest in contributing! This is a simple static site, so getting started is straightforward.
 
 ## Development Setup
 
 ```bash
-git clone https://github.com/atas-tech/agent-kryptos-website.git
-cd agent-kryptos-website
+git clone https://github.com/atas-tech/blindpass-website.git
+cd blindpass-website
 python3 -m http.server 8080
 # Open http://localhost:8080
 ```
@@ -28,7 +28,7 @@ No build tools, no dependencies, no frameworks. Just HTML, CSS, and JS.
 
 ### Content Updates
 - Keep technical claims accurate — see SPEC.md §3 "Key Claims to Verify"
-- Reference source documents in the core `agent-kryptos` repo (https://github.com/atas-tech/agent-kryptos)
+- Reference source documents in the core `blindpass` repo (https://github.com/atas-tech/blindpass)
 
 ### Adding a New Section
 1. Add HTML to `index.html` following the existing section pattern

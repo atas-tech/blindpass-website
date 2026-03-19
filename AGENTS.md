@@ -32,7 +32,7 @@ No automated test framework is configured. Validate changes manually before open
 - Check desktop and mobile layouts (`>1024`, `768-1024`, `<768`).
 - Verify animations and mobile menu interactions.
 - Confirm no browser console errors.
-- Re-check factual/security claims against the core `agent-kryptos` project when editing content.
+- Re-check factual/security claims against the core `blindpass` project when editing content.
 
 ## Commit & Pull Request Guidelines
 - Follow the existing commit style: `type: summary` (examples: `fix: ...`, `deploy: ...`, `test: ...`).

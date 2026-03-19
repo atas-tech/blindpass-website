@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>agent-Kryptos — Zero-Knowledge Secret Provisioning for AI Agents</title>
+  <title>BlindPass — The Zero-Knowledge Bridge for AI Agent Secrets</title>
   <meta name="description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval. The open-source standard for agentic secret management.">
   <meta name="keywords" content="AI agent security, HPKE encryption, secret provisioning, zero-knowledge, agent credentials, LLM security, agentic workflows, RFC 9180">
   <meta name="author" content="tuthan">
@@ -23,7 +23,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "agent-Kryptos",
+    "name": "BlindPass",
     "operatingSystem": "Agnostic",
     "applicationCategory": "SecurityApplication",
     "description": "Zero-knowledge secret provisioning for AI agents using HPKE end-to-end encryption.",
@@ -32,7 +32,7 @@
       "price": "0",
       "priceCurrency": "USD"
     },
-    "url": "https://kryptos.atas.tech/",
+    "url": "https://blindpass.atas.tech/",
     "author": {
       "@type": "Organization",
       "name": "Atas Tech",
@@ -43,25 +43,25 @@
       "name": "Atas Tech"
     },
     "softwareVersion": "1.0.0",
-    "license": "https://github.com/atas-tech/agent-kryptos/blob/main/LICENSE"
+    "license": "https://github.com/atas-tech/blindpass/blob/main/LICENSE"
   }
   </script>
 
   <!-- Canonical External Base -->
-  <link rel="canonical" href="https://kryptos.atas.tech/">
+  <link rel="canonical" href="https://blindpass.atas.tech/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="agent-Kryptos — Zero-Knowledge Secret Provisioning for AI Agents">
+  <meta property="og:title" content="BlindPass — The Zero-Knowledge Bridge for AI Agent Secrets">
   <meta property="og:description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval. The server never sees plaintext.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kryptos.atas.tech/">
-  <meta property="og:image" content="https://kryptos.atas.tech/assets/og-image.jpg">
+  <meta property="og:url" content="https://blindpass.atas.tech/">
+  <meta property="og:image" content="https://blindpass.atas.tech/assets/og-image.jpg">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="agent-Kryptos — Zero-Knowledge Secret Provisioning">
+  <meta name="twitter:title" content="BlindPass — The Zero-Knowledge Bridge for AI Agent Secrets">
   <meta name="twitter:description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval.">
-  <meta name="twitter:image" content="https://kryptos.atas.tech/assets/og-image.jpg">
+  <meta name="twitter:image" content="https://blindpass.atas.tech/assets/og-image.jpg">
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,7 +78,7 @@
     <div class="nav-container">
       <a href="#" class="logo">
         <span class="logo-icon">🔐</span>
-        <span class="logo-text">agent-<span class="logo-highlight">Kryptos</span></span>
+        <span class="logo-text">Blind<span class="logo-highlight">Pass</span></span>
       </a>
       <div class="nav-links">
         <a href="#problem">Problem</a>
@@ -135,7 +135,7 @@
               <span>Get Started</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="https://github.com/atas-tech/agent-kryptos" class="btn btn-outline" target="_blank" rel="noopener">
+            <a href="https://github.com/atas-tech/blindpass" class="btn btn-outline" target="_blank" rel="noopener">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               <span>View Documentation</span>
             </a>
@@ -176,7 +176,7 @@
                   <span></span><span></span><span></span>
                 </div>
               </div>
-              <pre><code><span class="prompt">$</span> <span class="cmd">agent-kryptos request</span>
+              <pre><code><span class="prompt">$</span> <span class="cmd">blindpass request</span>
 <span class="comment"># agent asks for a one-time handoff</span>
 {
   <span class="json-key">"secret"</span>: <span class="json-string">"OPENAI_API_KEY"</span>,
@@ -330,7 +330,7 @@
     <div class="section-container">
       <div class="section-header">
         <span class="section-label">The Solution</span>
-        <h2 class="section-title">How agent-Kryptos <span class="gradient-text">Works</span></h2>
+        <h2 class="section-title">How BlindPass <span class="gradient-text">Works</span></h2>
         <p class="section-subtitle">A secure 5-step process for end-to-end encrypted secret delivery.</p>
       </div>
       <div class="flow-container">
@@ -540,7 +540,7 @@
     <div class="section-container">
       <div class="section-header">
         <span class="section-label">Features</span>
-        <h2 class="section-title">Why <span class="gradient-text">agent-Kryptos</span></h2>
+        <h2 class="section-title">Why <span class="gradient-text">BlindPass</span></h2>
         <p class="section-subtitle">State-of-the-art cryptography, designed specifically for LLMs and ephemeral interactions.</p>
       </div>
       <div class="features-grid">
@@ -609,11 +609,11 @@
             <span class="terminal-title">terminal</span>
           </div>
           <div class="terminal-body">
-            <pre><code><span class="comment"># Install agent-Kryptos</span>
-<span class="prompt">$</span> <span class="cmd">npm install</span> agent-kryptos
+            <pre><code><span class="comment"># Install BlindPass</span>
+<span class="prompt">$</span> <span class="cmd">npm install</span> blindpass
 
 <span class="comment"># Start the secret provisioning service</span>
-<span class="prompt">$</span> <span class="cmd">npx</span> agent-kryptos serve
+<span class="prompt">$</span> <span class="cmd">npx</span> blindpass serve
 
 <span class="output">🔒 SPS Server running on http://localhost:3100</span>
 <span class="output">🔑 Gateway identity loaded (Ed25519)</span>
@@ -627,11 +627,11 @@
           </div>
         </div>
         <div class="cta-row">
-          <a href="https://github.com/atas-tech/agent-kryptos" class="btn btn-primary btn-large" target="_blank" rel="noopener">
+          <a href="https://github.com/atas-tech/blindpass" class="btn btn-primary btn-large" target="_blank" rel="noopener">
             <span>Read the Docs</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="https://github.com/atas-tech/agent-kryptos" class="btn btn-outline" target="_blank" rel="noopener">
+          <a href="https://github.com/atas-tech/blindpass" class="btn btn-outline" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             <span>Star on GitHub</span>
           </a>
@@ -647,7 +647,7 @@
         <div class="footer-brand">
           <a href="#" class="logo">
             <span class="logo-icon">🔐</span>
-            <span class="logo-text">agent-<span class="logo-highlight">Kryptos</span></span>
+            <span class="logo-text">Blind<span class="logo-highlight">Pass</span></span>
           </a>
           <p>Zero-knowledge secret provisioning for AI agents.</p>
         </div>
@@ -667,14 +667,14 @@
           <div class="footer-col">
             <h4>Resources</h4>
             <a href="#">Documentation</a>
-            <a href="https://github.com/atas-tech/agent-kryptos">Core Repo</a>
+            <a href="https://github.com/atas-tech/blindpass">Core Repo</a>
             <a href="#">Security Policy</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <p>Built with 🔐 for the age of AI agents</p>
-        <p class="footer-copyright">© 2026 tuthan / agent-Kryptos. Open source project.</p>
+        <p class="footer-copyright">© 2026 tuthan / BlindPass. Open source project.</p>
 
         <p class="footer-contact">Contact: <a href="https://github.com/tuthan">github: tuthan</a> — <a href="mailto:hung@atas.tech">email: hung@atas.tech</a></p>
       </div>

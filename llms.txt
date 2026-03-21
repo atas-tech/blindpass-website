@@ -3,22 +3,26 @@
 The Zero-Knowledge Bridge for AI Agent Secrets.
 
 ## Overview
-BlindPass is a secure handoff mechanism that allows developers and security teams to deliver credentials to AI agents without exposing plaintext to logs, prompts, or the LLM itself. It uses HPKE (Hybrid Public Key Encryption) for end-to-end security.
+BlindPass is a secure secret delivery system that unifies Human → Agent handoff, Agent → Agent exchange, and hosted workspace control. It allows developers and security teams to deliver credentials to AI agents without exposing plaintext to logs, prompts, or the LLM itself, using HPKE (Hybrid Public Key Encryption) for end-to-end security.
 
 ## Core Features
 - **Zero-Knowledge Architecture**: The server (SPS) never sees the plaintext secret.
 - **HPKE (RFC 9180)**: Industry-standard hybrid encryption using X25519, HKDF-SHA256, and ChaCha20-Poly1305.
+- **Human → Agent Handoff**: Secure browser-side encryption for human operator secret delivery.
+- **Agent → Agent Exchange**: Policy-checked autonomous secret transfer between requester and fulfiller agents.
 - **Single-Use Retrieval**: Secrets are automatically deleted from the server after the first retrieval.
-- **Short-Lived TTL**: Secret requests expire within 3 minutes by default.
-- **LLM Blindness**: AI agents trigger the flow but never see the secure URL or confirmation code.
+- **Short-Lived TTL**: Secret requests expire within minutes, reducing the window of exposure.
+- **Hosted Platform**: A managed control plane for operating agents, members, approvals, and audit health.
 
 ## Components
-- **SPS Server**: A Fastify/Redis service for orchestrating secret requests.
+- **SPS Server (Open Source)**: A Fastify/Redis service for orchestrating secret requests.
 - **Agent Skill**: Client-side logic for HPKE keypair generation and secure retrieval.
-- **Browser UI**: A zero-dependency page for human-in-the-loop secret entry and encryption.
-- **Gateway**: A secure boundary that Redacts/Filters URLs and manages identity.
+- **Hosted Dashboard**: Conceptual control plane for team-based agent management.
+- **Policy Engine**: Trust rings and approval paths for governed secret exchange.
+- **Security Layers**: 11 defensive layers including TEE support and egress filtering.
 
 ## Links
 - Website: https://blindpass.atas.tech/
 - GitHub: https://github.com/atas-tech/blindpass
 - Documentation: https://github.com/atas-tech/blindpass#readme
+- Hosted Platform: https://app.atas.tech/

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initScrollAnimations();
     initMobileMenu();
-    initHeroMode();
+    initTabPanels();
 });
 
 /* =============================================
@@ -172,68 +172,58 @@ function initMobileMenu() {
 }
 
 /* =============================================
-   Hero Mode Toggle
+   Tabbed Panels
    ============================================= */
 
-function initHeroMode() {
-    const buttons = Array.from(document.querySelectorAll('[data-hero-mode]'));
-    const content = Array.from(document.querySelectorAll('[data-hero-content]'));
-    const hero = document.getElementById('hero');
-    const heroContainer = document.querySelector('.hero-container');
-    let transitionTimer;
+function initTabPanels() {
+    const groups = document.querySelectorAll('[data-tab-group]');
 
-    if (!buttons.length || !content.length) return;
+    groups.forEach((group) => {
+        const groupName = group.dataset.tabGroup;
+        const buttons = Array.from(group.querySelectorAll('[data-tab-target]'));
+        const panels = Array.from(
+            document.querySelectorAll(`[data-tab-panel][data-tab-group="${groupName}"]`)
+        );
 
-    function setMode(mode, options = {}) {
-        const { focusButton = false } = options;
+        if (!buttons.length || !panels.length) return;
 
-        buttons.forEach((button) => {
-            const isActive = button.dataset.heroMode === mode;
-            button.classList.toggle('active', isActive);
-            button.setAttribute('aria-selected', String(isActive));
-            button.tabIndex = isActive ? 0 : -1;
+        function setActive(targetId, options = {}) {
+            const { focusButton = false } = options;
 
-            if (isActive && focusButton) {
-                button.focus({ preventScroll: true });
-            }
-        });
+            buttons.forEach((button) => {
+                const isActive = button.dataset.tabTarget === targetId;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-selected', String(isActive));
+                button.tabIndex = isActive ? 0 : -1;
 
-        content.forEach((element) => {
-            element.hidden = element.dataset.heroContent !== mode;
-        });
+                if (isActive && focusButton) {
+                    button.focus({ preventScroll: true });
+                }
+            });
 
-        if (heroContainer) {
-            heroContainer.classList.toggle('hero-mode-agent', mode === 'agent');
+            panels.forEach((panel) => {
+                const isActive = panel.id === targetId;
+                panel.classList.toggle('active', isActive);
+                panel.hidden = !isActive;
+            });
         }
 
-        document.body.classList.toggle('hero-mode-agent', mode === 'agent');
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                setActive(button.dataset.tabTarget, { focusButton: true });
+            });
 
-        if (hero) {
+            button.addEventListener('keydown', (event) => {
+                if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
 
-            hero.classList.remove('mode-transition');
-            void hero.offsetWidth;
-            hero.classList.add('mode-transition');
-            window.clearTimeout(transitionTimer);
-            transitionTimer = window.setTimeout(() => {
-                hero.classList.remove('mode-transition');
-            }, 340);
-        }
-    }
-
-    buttons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            setMode(button.dataset.heroMode, { focusButton: true });
+                event.preventDefault();
+                const direction = event.key === 'ArrowRight' ? 1 : -1;
+                const nextIndex = (index + direction + buttons.length) % buttons.length;
+                setActive(buttons[nextIndex].dataset.tabTarget, { focusButton: true });
+            });
         });
 
-        button.addEventListener('keydown', (event) => {
-            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-
-            event.preventDefault();
-            const direction = event.key === 'ArrowRight' ? 1 : -1;
-            const nextIndex = (index + direction + buttons.length) % buttons.length;
-            setMode(buttons[nextIndex].dataset.heroMode, { focusButton: true });
-        });
+        const initialButton = buttons.find((button) => button.classList.contains('active')) || buttons[0];
+        setActive(initialButton.dataset.tabTarget);
     });
-
-    setMode('human');
 }

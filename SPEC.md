@@ -31,11 +31,16 @@ All cards use **glassmorphism**: translucent background with `backdrop-filter: b
 - **Outline** (`btn-outline`): Transparent with border, fill on hover
 
 ### Hero
-- **Unified message**: presents a single value proposition covering both human and agent workflows (the Human/Agent toggle is reserved for the How It Works section, not the hero — see `LANDING_PAGE_IMPROVEMENT_PLAN.md`)
+- **Unified message**: presents a single value proposition covering Human → Agent, Agent → Agent, and hosted workspace operations
 - **Primary CTA**: hosted platform path
 - **Secondary CTA**: docs or self-hosting path
 - **Trust row**: compact badges for HPKE (RFC 9180), single-use retrieval, in-memory only, Open Source + Hosted
 - **Animated visual**: the existing particle background + shield/ring animation remains the persistent hero anchor
+
+### Tabbed Panels
+- **How It Works**: switcher between `Human → Agent` and `Agent → Agent`
+- **Platform**: switcher between `Dashboard`, `Policy & Approvals`, and `Deployment Options`
+- **Behavior**: the first panel is visible by default without JS; JavaScript enhances the controls with ARIA state and panel toggling
 
 ### Section Headers
 Each section follows the pattern:
@@ -60,11 +65,12 @@ The website content is sourced from these project files:
 |---------|----------------|
 | Hero tagline | Original brainstorm — tagline created during naming |
 | Problem cards | `Brainstorm Secure Secret System.md` §1 |
-| How It Works | `Implementation Plan.md` — Agent Skill + SPS flow |
-| Architecture | `Implementation Plan.md` §2–5 (project structure) |
+| Use Cases | `README.md`, `Phase 2A - Agent to Agent Exchange.md`, `Phase 3A - Hosted Platform.md` |
+| How It Works | `Brainstorm Secure Secret System.md`, `Phase 2A - Agent to Agent Exchange.md`, `Phase 2B - Production A2A.md` |
+| Platform | `Phase 3A - Hosted Platform.md`, `Phase 3B - UI & Operations.md`, `guides/policy.md` |
 | Defense in Depth | `Brainstorm Secure Secret System.md` §5 |
-| Features | `Brainstorm Secure Secret System.md` §3 |
-| Get Started | `package.json` scripts + `SKILL.md` |
+| Pricing / Comparison | `LANDING_PAGE_IMPROVEMENT_PLAN.md`, `README.md`, hosted phase docs |
+| Final CTA | `README.md`, deployment docs, hosted service URLs |
 
 **When updating features or architecture in the core `blindpass` repo (https://github.com/atas-tech/blindpass), update the corresponding section here.**
 
@@ -86,7 +92,7 @@ These specific details must stay accurate:
 | Animation | Trigger | Duration | Easing |
 |-----------|---------|----------|--------|
 | Particle background | Page load | Continuous | Linear |
-| Hero mode toggle | Click / keyboard | 200ms | ease |
+| Tab / panel switch | Click / keyboard | 200ms | ease |
 | Scroll fade-in | Intersection Observer (10% visible) | 700ms | ease-out |
 | Card hover lift | Mouse hover | 200ms | ease |
 | Shield rings | Page load | 10–20s per rotation | Linear |
@@ -98,8 +104,8 @@ These specific details must stay accurate:
 ### Staggered Grid Animations
 Grid children use incremental `transition-delay`:
 - Problem cards: 0, 100ms, 200ms, 300ms
-- Architecture cards: 0, 100ms, 200ms, 300ms
-- Feature cards: 0, 100ms, 200ms, 300ms, 400ms, 500ms
+- Use case cards: 0, 100ms, 200ms
+- Flow cards: 0, 100ms, 200ms, 300ms
 - Defense layers: 0, 50ms, 100ms, ... 500ms
 
 ---
@@ -109,9 +115,9 @@ Grid children use incremental `transition-delay`:
 | Breakpoint | Layout Changes |
 |------------|---------------|
 | `> 1024px` | Full desktop layout, 2-col hero with persistent animated visual |
-| `768–1024px` | Single-col hero, toggle centered, agent terminal card stays readable |
-| `< 768px` | Mobile: single-col everything, hamburger menu, reduced padding, stacked agent panel |
-| `< 480px` | Extra compact: tighter padding, smaller code font |
+| `768–1024px` | Single-col hero, multi-card sections begin to collapse, dashboard/policy panels stack vertically |
+| `< 768px` | Mobile: single-col sections, hamburger menu, stacked platform panels, comparison table becomes card-like rows |
+| `< 480px` | Extra compact: tighter padding, smaller code font, reduced pill/button density |
 
 ---
 
@@ -124,8 +130,8 @@ Grid children use incremental `transition-delay`:
 - [x] Semantic HTML5 (`<nav>`, `<section>`, `<footer>`)
 - [x] `alt` attributes on images (SVG inline — covered by `aria-label` if needed)
 - [x] Add `<link rel="icon">` favicon
-- [ ] Add Open Graph / Twitter Card meta tags
-- [ ] Add `sitemap.xml` and `robots.txt` for search engine crawling
+- [x] Add Open Graph / Twitter Card meta tags
+- [x] Add `sitemap.xml` and `robots.txt` for search engine crawling
 
 ---
 

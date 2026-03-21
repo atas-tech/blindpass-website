@@ -658,6 +658,22 @@ Avoid:
 
 ## Suggested Execution Order
 
+### High-Fidelity Design Package Status
+
+The Stitch concept phase is now complete for the net-new product-story sections. The implementation plan should treat the local exports under `.stitch/designs/` as the current reference set:
+
+1. `01-use-cases` → three-card product-mode section (`Human → Agent`, `Agent → Agent`, `Hosted Teams`)
+2. `02-agent-to-agent` → sequence/flow visual for the `How It Works` agent-to-agent state
+3. `03-dashboard` → conceptual hosted control-plane mock for the `Platform` section
+4. `04-policy-engine` → trust-ring/policy visualization for the `Platform` section
+5. `05-platform-options` → self-managed vs hosted deployment chooser for the `Platform` section
+6. `06-pricing` → `Open Source Core` vs `Hosted Platform` pricing cards plus `x402` note
+7. `07-comparison` → dense `Open Source Core` vs `Hosted Platform` capability matrix
+
+Implementation note:
+
+- These exported `.html` files are reference material, not production code to paste in directly. The repo is a hand-authored static site with its own tokens, spacing, and JavaScript conventions. Rebuild the concepts inside `index.html`, `style.css`, and `script.js` using the exports as visual/content guides.
+
 ### Phase 0 — Content Audit
 
 1. Classify each current and proposed claim as `shipped`, `in progress`, or `planned`
@@ -665,40 +681,143 @@ Avoid:
 3. ~~Resolve the CTA destinations and whether hosted should be public-facing yet~~ → **resolved at the strategy level: hosted is public-facing and destination types are defined; exact URLs still need wiring during implementation**
 4. ~~Decide whether pricing appears anywhere on-page~~ → **resolved: yes**
 
-### Phase A — Stitch Design (batch)
+### Phase A — Stitch Design (complete)
 
 > **Design system input** — Stitch should consume [`DESIGN.md`](DESIGN.md) as the design system source of truth. All new sections and components must follow the tokens, elevation rules, and Do's/Don'ts defined there.
 
-Design these together as they form the "new product story" block:
+Completed concept set:
 
-1. Use Cases section layout (item 2)
-2. Agent-to-Agent section with flow/sequence visual (item 3)
-3. Hosted Dashboard section with dashboard mock (item 4)
-4. Policy Engine panel within Platform, with trust-ring visual (item 5)
-5. Deployment Options / Platform section layout (item 2)
-6. Pricing section or Pricing-within-Platform layout (item 9)
-7. OSS vs Hosted comparison component (item 8)
-8. Platform layout pattern: tabs, accordions, or stacked panels (component guidance defined in `DESIGN.md`)
+1. Use Cases section layout (`01-use-cases`)
+2. Agent-to-Agent flow / sequence visual (`02-agent-to-agent`)
+3. Hosted Dashboard concept (`03-dashboard`)
+4. Policy Engine / trust rings concept (`04-policy-engine`)
+5. Deployment Options / Platform chooser (`05-platform-options`)
+6. Pricing section (`06-pricing`)
+7. OSS vs Hosted comparison component (`07-comparison`)
 
-### Phase B — Code Implementation
+### Phase B — Information Architecture Refactor
 
-1. Update hero and navigation copy (items 1, 10)
-2. Implement Stitch-approved new sections (items 2–5)
-3. Implement Deployment Options / Platform structure from Phase A
-4. Implement pricing section / pricing block (item 9)
-5. Add proof surfaces: mock, diagram, comparison (item 8)
-6. Replace quick-start / CTA section (item 6)
-7. **Remove old Architecture and Features sections** — content is folded into Use Cases, Platform, and comparison; leaving them in place alongside the new sections would duplicate information
-8. Audit all copy claims against core docs (item 7)
-9. Update `DESIGN.md` with any new component specs, then sync `SPEC.md` with new animation timings, breakpoint changes, and content sources
+1. Rewrite the top navigation to the resolved anchor model:
+   - `Problem`
+   - `Use Cases`
+   - `Platform`
+   - `Security`
+   - `Pricing`
+   - `Docs`
+2. Rewrite the hero to a unified value proposition:
+   - remove the current Human/Agent toggle from the hero
+   - keep one shared headline/subhead
+   - keep dual CTA logic for OSS + hosted audiences
+   - preserve the existing trust/stat row, but retune the copy
+3. Re-map the page structure in `index.html` to the new section order:
+   - Hero
+   - Problem
+   - Use Cases
+   - How It Works
+   - Platform
+   - Security
+   - Pricing
+   - Open Source vs Hosted
+   - Final CTA
+   - Footer
+4. Remove or fold legacy sections once replacements are in place:
+   - remove the old `Architecture` section after its useful ideas are absorbed into `Use Cases` / `Platform`
+   - remove the old `Features` section after its useful ideas are absorbed into `Platform` / comparison
+   - replace the current `Get Started` section with the new split-path final CTA
 
-### Phase C — Verification
+### Phase C — Section Implementation Plan
 
-1. Review the full page for section bloat and nav overflow on desktop and mobile
-2. Check that every CTA has a real destination
-3. Re-verify all security and hosted-product claims against the core repo docs
-4. Confirm pricing language does not blur hosted subscriptions and `x402` machine payments
-5. Confirm screenshots or mocks are labeled appropriately if they include planned functionality
+Implement in this order so the page works after each checkpoint and the largest structural risks are handled first.
+
+#### C1. Hero + Nav + Problem
+
+1. Update hero copy and buttons first because it affects page framing and nav CTA language.
+2. Remove hero-mode markup that only exists to support the hero toggle.
+3. Delete `initHeroMode()` and any CSS that only exists for hero tab state once the new hero is stable.
+4. Tighten the `Problem` cards so the section leads faster into the new product surface.
+
+#### C2. Use Cases + How It Works
+
+1. Build a new `Use Cases` section from `01-use-cases`:
+   - three cards
+   - short “best for” labels
+   - compact terminal/proof strip below the cards if it helps pacing
+2. Keep `How It Works`, but convert it into a dual-flow section:
+   - `Human → Agent`
+   - `Agent → Agent`
+3. Use `02-agent-to-agent` as the visual direction for the second flow state.
+4. Add only the interaction needed to switch the flow content; avoid rebuilding the old hero toggle behavior one-for-one.
+
+#### C3. Platform
+
+1. Build one consolidated `Platform` section with internal tabs or segmented controls.
+2. Use these three views inside that section:
+   - `Dashboard` from `03-dashboard`
+   - `Policy & Approvals` from `04-policy-engine`
+   - `Deployment Options` from `05-platform-options`
+3. Keep the dashboard explicitly labeled conceptual.
+4. Keep the policy view focused on trust rings, policy states, and auditability rather than deep product copy.
+5. Keep deployment options simple:
+   - `Open Source / Self-Hosted`
+   - `Hosted Workspace Platform`
+6. Reuse one shared panel shell so all three views feel like one product surface instead of three unrelated sections.
+
+#### C4. Pricing + Comparison + Final CTA
+
+1. Build the standalone `Pricing` section from `06-pricing`.
+2. Keep recurring hosted pricing distinct from `x402`:
+   - pricing cards explain plans
+   - a separate note/callout explains autonomous machine payments
+3. Build the comparison grid from `07-comparison` as the lower-page decision aid.
+4. Replace the final CTA with split paths:
+   - `Read Docs`
+   - `Self-Host`
+   - `Explore Hosted`
+5. Keep the terminal snippet only if it still supports the OSS story after the new pricing/comparison sections are in place.
+
+### Phase D — Styling and Interaction Workstreams
+
+#### HTML
+
+1. Add new semantic section IDs for `use-cases`, `platform`, `pricing`, and `comparison`.
+2. Keep anchor IDs stable and readable because the nav remains flat and mobile users need predictable jumps.
+3. Use clear labels for conceptual UI blocks so planned hosted surfaces are not presented as shipped screenshots.
+
+#### CSS
+
+1. Extend the existing token system instead of introducing screen-specific inline styles from the Stitch exports.
+2. Create reusable patterns for:
+   - section headers
+   - comparison tables
+   - pricing cards
+   - platform tab buttons
+   - glass dashboard/policy panels
+3. Verify the new dense sections at all required breakpoints:
+   - `>1024`
+   - `768-1024`
+   - `<768`
+4. Treat the comparison matrix as the highest mobile-risk component and design its stacked/mobile state early.
+
+#### JavaScript
+
+1. Remove the hero toggle logic after the hero rewrite.
+2. Add only two net-new interaction systems:
+   - `How It Works` flow switcher
+   - `Platform` tab/segmented-control switcher
+3. Keep both interactions progressively enhanced:
+   - first state visible without JS
+   - buttons/tabs update ARIA state when JS is available
+4. Re-test the mobile nav after the nav link list changes.
+
+### Phase E — Verification
+
+1. Confirm the new section order does not create excessive page fatigue.
+2. Check nav overflow and tap targets on mobile after adding the new anchors.
+3. Verify that every CTA points to a real destination before deploy.
+4. Re-check all product/security claims against the `blindpass` core docs before merging.
+5. Confirm conceptual visuals are labeled in any place that could imply a live hosted UI.
+6. Check that pricing and `x402` are visually separated enough to avoid billing confusion.
+7. Update [`SPEC.md`](SPEC.md) and [`README.md`](README.md) if the public section map, CTA structure, or design token usage changes materially.
 
 ---
 

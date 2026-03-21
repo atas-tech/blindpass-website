@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlindPass — The Zero-Knowledge Bridge for AI Agent Secrets</title>
-  <meta name="description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval. The open-source standard for agentic secret management.">
-  <meta name="keywords" content="AI agent security, HPKE encryption, secret provisioning, zero-knowledge, agent credentials, LLM security, agentic workflows, RFC 9180">
+  <title>BlindPass — Secure Secret Delivery for Humans, Agents, and Hosted Teams</title>
+  <meta name="description" content="BlindPass secures Human → Agent handoff, Agent → Agent exchange, and hosted workspace control with HPKE, single-use retrieval, and in-memory-only delivery.">
+  <meta name="keywords" content="AI agent security, HPKE encryption, secret provisioning, zero-knowledge, hosted control plane, agent to agent exchange, LLM security, RFC 9180">
   <meta name="author" content="tuthan">
   <meta name="robots" content="index, follow">
 
@@ -26,7 +26,7 @@
     "name": "BlindPass",
     "operatingSystem": "Agnostic",
     "applicationCategory": "SecurityApplication",
-    "description": "Zero-knowledge secret provisioning for AI agents using HPKE end-to-end encryption.",
+    "description": "Zero-knowledge secret delivery for human-to-agent handoff, agent-to-agent exchange, and hosted operator control.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -51,16 +51,16 @@
   <link rel="canonical" href="https://blindpass.atas.tech/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="BlindPass — The Zero-Knowledge Bridge for AI Agent Secrets">
-  <meta property="og:description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval. The server never sees plaintext.">
+  <meta property="og:title" content="BlindPass — Secure Secret Delivery for Humans, Agents, and Hosted Teams">
+  <meta property="og:description" content="BlindPass combines HPKE, single-use retrieval, and hosted policy controls for Human → Agent, Agent → Agent, and team operations.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://blindpass.atas.tech/">
   <meta property="og:image" content="https://blindpass.atas.tech/assets/og-image.jpg">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BlindPass — The Zero-Knowledge Bridge for AI Agent Secrets">
-  <meta name="twitter:description" content="Securely deliver secrets to AI agents with HPKE end-to-end encryption. Zero-knowledge, in-memory only, single-use retrieval.">
+  <meta name="twitter:title" content="BlindPass — Secure Secret Delivery for Humans, Agents, and Hosted Teams">
+  <meta name="twitter:description" content="BlindPass secures Human → Agent handoff, Agent → Agent exchange, and hosted workspace control with HPKE and single-use delivery.">
   <meta name="twitter:image" content="https://blindpass.atas.tech/assets/og-image.jpg">
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -76,16 +76,18 @@
   <!-- Navigation -->
   <nav id="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">
+      <a href="#hero" class="logo">
         <span class="logo-icon">🔐</span>
         <span class="logo-text">Blind<span class="logo-highlight">Pass</span></span>
       </a>
       <div class="nav-links">
         <a href="#problem">Problem</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#features">Features</a>
-        <a href="#get-started" class="nav-cta">Get Started</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#platform">Platform</a>
+        <a href="#security">Security</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://github.com/atas-tech/blindpass" target="_blank" rel="noopener">Docs</a>
+        <a href="https://app.atas.tech/" class="nav-cta" target="_blank" rel="noopener">Explore Hosted</a>
       </div>
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -96,146 +98,48 @@
   <!-- Hero Section -->
   <section id="hero">
     <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-copy">
-          <div class="hero-mode-toggle" role="tablist" aria-label="Hero view toggle">
-            <button class="hero-mode-btn active" type="button" role="tab" aria-selected="true" aria-controls="hero-human-panel" id="hero-human-tab" data-hero-mode="human">
-              <span>Human</span>
-            </button>
-            <button class="hero-mode-btn" type="button" role="tab" aria-selected="false" aria-controls="hero-agent-panel" id="hero-agent-tab" data-hero-mode="agent">
-              <span>Agent</span>
-            </button>
-          </div>
-          <div class="hero-badge" data-hero-content="human">
-            <span class="badge-dot"></span>
-            Operator-first handoff · Open Source
-          </div>
-
-          <div class="hero-badge hero-badge-agent" data-hero-content="agent" hidden>
-            <span class="badge-dot"></span>
-            Automomus secret delivery · Agent ↔ Gateway ↔ Agent
-
-          </div>
-          <h1 class="hero-title">
-            <span data-hero-content="human">
-              Ship agent secrets without shipping <span class="gradient-text">exposure.</span>
-            </span>
-            <span data-hero-content="agent" hidden>
-              Provision secrets to agents without exposing <span class="gradient-text">plaintext.</span>
-            </span>
-          </h1>
-          <p class="hero-description" data-hero-content="human">
-            Give developers and security teams a zero-knowledge way to hand off credentials. HPKE end-to-end encryption, in-memory only storage, and single-use retrieval keep sensitive values out of logs, prompts, and chat history.
-          </p>
-          <p class="hero-description" data-hero-content="agent" hidden>
-            Give autonomous workflows a verifiable delivery path across browser, gateway, and runtime boundaries. The agent gets what it needs, while the secret stays sealed until the final authorized retrieval step.
-          </p>
-          <div class="hero-buttons" data-hero-content="human">
-            <a href="#get-started" class="btn btn-primary">
-              <span>Get Started</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="https://github.com/atas-tech/blindpass" class="btn btn-outline" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              <span>View Documentation</span>
-            </a>
-          </div>
-          <div class="hero-buttons" data-hero-content="agent" hidden>
-            <a href="#how-it-works" class="btn btn-primary">
-              <span>Explore API Flow</span>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#architecture" class="btn btn-outline">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18M7 3v4M17 3v4M5 11h14v10H5z"/><path d="M9 15h6M9 19h4"/></svg>
-              <span>View Architecture</span>
-            </a>
-          </div>
-          <div class="hero-stats" id="hero-human-panel" role="tabpanel" aria-labelledby="hero-human-tab" data-hero-content="human">
-            <div class="stat">
-              <span class="stat-number">11</span>
-              <span class="stat-label">Security Layers</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <span class="stat-number">RFC 9180</span>
-              <span class="stat-label">HPKE Standard</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <span class="stat-number">0</span>
-              <span class="stat-label">Plaintext Exposure</span>
-            </div>
-          </div>
+      <div class="hero-copy">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Open source core + hosted control plane
         </div>
-        <div class="hero-agent-panel" id="hero-agent-panel" role="tabpanel" aria-labelledby="hero-agent-tab" data-hero-content="agent" hidden>
-          <div class="hero-terminal-card">
-            <div class="hero-terminal-column">
-              <div class="hero-terminal-header">
-                <span>Terminal / Request</span>
-                <div class="hero-terminal-dots">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <pre><code><span class="prompt">$</span> <span class="cmd">blindpass request</span>
-<span class="comment"># agent asks for a one-time handoff</span>
-{
-  <span class="json-key">"secret"</span>: <span class="json-string">"OPENAI_API_KEY"</span>,
-  <span class="json-key">"ttl"</span>: <span class="json-number">180</span>,
-  <span class="json-key">"mode"</span>: <span class="json-string">"single-use"</span>
-}</code></pre>
-            </div>
-            <div class="hero-terminal-column hero-terminal-column-response">
-              <div class="hero-terminal-header">
-                <span>Structured Response</span>
-                <strong>200 OK</strong>
-              </div>
-              <pre><code>{
-  <span class="json-key">"proof"</span>: <span class="json-string">"hpke_sealed_payload"</span>,
-  <span class="json-key">"confirm_code"</span>: <span class="json-string">"482173"</span>,
-  <span class="json-key">"retrieve_once"</span>: <span class="json-string">"true"</span>
-}</code></pre>
-            </div>
+        <h1 class="hero-title">Secure secret delivery for <span class="gradient-text">humans, agents, and hosted teams.</span></h1>
+        <p class="hero-description">
+          BlindPass unifies Human → Agent handoff, Agent → Agent exchange, and hosted workspace control with HPKE encryption, in-memory-only handling, and single-use retrieval that keeps secrets out of prompts, logs, and middleware.
+        </p>
+        <div class="hero-buttons">
+          <a href="https://app.atas.tech/" class="btn btn-primary" target="_blank" rel="noopener">
+            <span>Explore Hosted</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://github.com/atas-tech/blindpass" class="btn btn-outline" target="_blank" rel="noopener">
+            <span>Read Docs</span>
+          </a>
+          <a href="https://github.com/atas-tech/blindpass/blob/main/docs/deployment/Unraid.md" class="btn btn-outline" target="_blank" rel="noopener">
+            <span>Self-Host</span>
+          </a>
+        </div>
+        <div class="hero-trust-row">
+          <span>HPKE (RFC 9180)</span>
+          <span>Single-use retrieval</span>
+          <span>In-memory only</span>
+          <span>Open source + hosted</span>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">11</span>
+            <span class="stat-label">Security Layers</span>
           </div>
-          <div class="hero-agent-support">
-            <div class="hero-agent-note">
-              <div class="hero-agent-note-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.09 9a3 3 0 115.82 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-              </div>
-              <div>
-                <strong>LLM blindness by design</strong>
-
-                <p>Agents trigger the flow, but secrets stay out of prompts, logs, and model context.</p>
-              </div>
-            </div>
-            <div class="hero-support-card">
-              <div class="hero-support-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h8"/><path d="M12 8l4 4-4 4"/><path d="M4 7h4v10H4z"/><path d="M16 7h4v10h-4z"/></svg>
-              </div>
-              <div>
-                <strong>Agent-to-Agent Provisioning</strong>
-                <p>Relay secrets safely across cooperating agents.</p>
-              </div>
-            </div>
-            <div class="hero-support-card">
-              <div class="hero-support-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 12h6"/><path d="M16 10h.01"/><path d="M18 14h.01"/></svg>
-              </div>
-              <div>
-                <strong>x402 Autonomous Payments</strong>
-                <p>Enable secure pay-per-request agent flows.</p>
-              </div>
-            </div>
-            <div class="hero-support-card">
-              <div class="hero-support-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 14l4-4 4 4 4-4 4 4"/><path d="M4 18l4-4 4 4 4-4 4 4"/><path d="M4 10l4-4 4 4 4-4 4 4"/></svg>
-              </div>
-              <div>
-                <strong>OpenClaw Support</strong>
-                <p>Works with OpenClaw-style agent runtimes.</p>
-              </div>
-            </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Product Modes</span>
           </div>
-
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number">0</span>
+            <span class="stat-label">Plaintext on Server</span>
+          </div>
         </div>
       </div>
       <div class="hero-visual">
@@ -260,25 +164,20 @@
           <div class="data-stream stream-3"></div>
           <div class="data-stream stream-4"></div>
         </div>
-        <div class="hero-visual-card visual-card-top" data-hero-content="human">
-          <span class="visual-card-label">Human View</span>
-          <strong>Human approves the handoff.</strong>
-          <p>Secrets stay sealed until the operator completes the browser-based confirmation step.</p>
+        <div class="hero-visual-card visual-card-top">
+          <span class="visual-card-label">Human → Agent</span>
+          <strong>Out-of-band approval with browser-side encryption.</strong>
+          <p>Operators confirm the handoff while the secret stays sealed until the final retrieval step.</p>
         </div>
-        <div class="hero-visual-card visual-card-bottom" data-hero-content="human">
-          <span class="visual-card-label">Zero Exposure</span>
-          <strong>Server never sees plaintext.</strong>
-          <p>Encryption happens client-side before the payload leaves the browser.</p>
+        <div class="hero-visual-card visual-card-middle">
+          <span class="visual-card-label">Agent → Agent</span>
+          <strong>Policy-checked exchange across autonomous workflows.</strong>
+          <p>Requester, fulfiller, and SPS coordinate a single-use transfer without exposing plaintext to the runtime graph.</p>
         </div>
-        <div class="hero-visual-card visual-card-top" data-hero-content="agent" hidden>
-          <span class="visual-card-label">Agent View</span>
-          <strong>Automation triggers the request.</strong>
-          <p>The runtime asks for a single-use handoff and waits for proof-backed retrieval.</p>
-        </div>
-        <div class="hero-visual-card visual-card-bottom" data-hero-content="agent" hidden>
-          <span class="visual-card-label">Controlled Delivery</span>
-          <strong>Plaintext appears only once.</strong>
-          <p>Single-use retrieval and expiring proof windows reduce reuse and replay risk.</p>
+        <div class="hero-visual-card visual-card-bottom">
+          <span class="visual-card-label">Hosted Teams</span>
+          <strong>Control agents, members, approvals, and quotas in one place.</strong>
+          <p>Conceptual hosted UI, audit visibility, and deployment options are part of the public product story now.</p>
         </div>
       </div>
     </div>
@@ -288,38 +187,89 @@
   <section id="problem">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">The Problem</span>
-        <h2 class="section-title">The Secret Problem <span class="gradient-text">No One Talks About</span></h2>
-        <p class="section-subtitle">AI agents need credentials to do their jobs. But every current method leaks secrets.</p>
+        <span class="section-label">Problem</span>
+        <h2 class="section-title">Secret delivery breaks down long before the <span class="gradient-text">agent runs.</span></h2>
+        <p class="section-subtitle">Most AI workflows still rely on chat copy-paste, plaintext middleware, and static credentials that outlive the task they were created for.</p>
       </div>
       <div class="problem-grid">
-        <div class="problem-card" data-animate>
+        <article class="problem-card" data-animate>
           <div class="problem-icon danger">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M12 8v4M12 16h.01"/></svg>
           </div>
-          <h3>Chat Leaks</h3>
-          <p>AI agents ask for API keys in chat. Keys get logged, stored in conversation history, and leaked through prompt injection.</p>
-        </div>
-        <div class="problem-card" data-animate>
+          <h3>Prompt and chat exposure</h3>
+          <p>Secrets leak into transcript history, agent memory, and prompt injection surfaces before any runtime control can help.</p>
+        </article>
+        <article class="problem-card" data-animate>
           <div class="problem-icon danger">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 12v6M9 15h6"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 14h6"/><path d="M9 18h4"/></svg>
           </div>
-          <h3>Config Files</h3>
-          <p>.env files and configs get committed to repos, shared in Slack, and copied across machines unencrypted.</p>
-        </div>
-        <div class="problem-card" data-animate>
+          <h3>Config and environment sprawl</h3>
+          <p>Credentials get duplicated across `.env` files, CI variables, screenshots, and internal notes with no bounded handoff model.</p>
+        </article>
+        <article class="problem-card" data-animate>
           <div class="problem-icon danger">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><line x1="12" y1="3" x2="12" y2="7" stroke="#ff4757" stroke-dasharray="2,2"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/><line x1="12" y1="3" x2="12" y2="7" stroke="#ff4757" stroke-dasharray="2,2"/></svg>
           </div>
-          <h3>Plain Text on the Wire</h3>
-          <p>Secrets transmitted as plain text through middleware, proxies, and gateways that can read everything passing through.</p>
-        </div>
-        <div class="problem-card" data-animate>
+          <h3>Middleware can still read the payload</h3>
+          <p>Gateways, proxies, and coordination services often see plaintext because delivery was never designed as a zero-knowledge path.</p>
+        </article>
+        <article class="problem-card" data-animate>
           <div class="problem-icon danger">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><path d="M4.93 4.93l14.14 14.14" stroke="#ff4757"/></svg>
           </div>
-          <h3>No Expiry</h3>
-          <p>Secrets persist forever in memory, logs, and databases with no automatic cleanup or time-based expiration.</p>
+          <h3>Reuse outlives intent</h3>
+          <p>Once a token exists, it tends to stick around. Teams need retrieval that expires, audits, and self-destructs by default.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section id="use-cases">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">Use Cases</span>
+        <h2 class="section-title">One system. Three ways to <span class="gradient-text">provision.</span></h2>
+        <p class="section-subtitle">BlindPass now tells a full product story: operator handoff, autonomous exchange, and hosted workspace control.</p>
+      </div>
+      <div class="use-case-grid">
+        <article class="use-case-card" data-animate>
+          <div class="use-case-icon">↗</div>
+          <div class="use-case-tag">Best for Ops</div>
+          <h3>Human → Agent</h3>
+          <p>Securely hand off API keys and credentials from human operators to agents without exposing secrets to the agent’s conversation layer.</p>
+          <span class="use-case-note">Browser encryption · single-use retrieval</span>
+        </article>
+        <article class="use-case-card" data-animate>
+          <div class="use-case-icon">⇄</div>
+          <div class="use-case-tag use-case-tag-purple">Best for Autonomous Workflows</div>
+          <h3>Agent → Agent</h3>
+          <p>Enable autonomous handoff between requester and fulfiller agents with policy checks, approvals, and one-time retrieval.</p>
+          <span class="use-case-note">Trust rings · approval paths</span>
+        </article>
+        <article class="use-case-card" data-animate>
+          <div class="use-case-icon">◫</div>
+          <div class="use-case-tag">Best for Organizations</div>
+          <h3>Hosted Teams</h3>
+          <p>Manage agents, members, audit events, quotas, and billing from a shared control plane designed for platform operators.</p>
+          <span class="use-case-note">Dashboard · policy · billing</span>
+        </article>
+      </div>
+      <div class="proof-strip terminal" data-animate>
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-title">provisioning-request.sh</span>
+        </div>
+        <div class="terminal-body">
+          <pre><code><span class="prompt">$</span> <span class="cmd">blindpass provision</span> <span class="string">--target "research-agent-01"</span> <span class="string">--scope "read-only"</span>
+<span class="comment"># generating proof-backed handoff</span>
+<span class="output">→ request mode: human_handoff</span>
+<span class="output">→ policy ring: ops / low-risk</span>
+<span class="output">→ status: pending_retrieval</span></code></pre>
         </div>
       </div>
     </div>
@@ -329,205 +279,323 @@
   <section id="how-it-works">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">The Solution</span>
-        <h2 class="section-title">How BlindPass <span class="gradient-text">Works</span></h2>
-        <p class="section-subtitle">A secure 5-step process for end-to-end encrypted secret delivery.</p>
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Switch between the two delivery <span class="gradient-text">paths.</span></h2>
+        <p class="section-subtitle">Human handoff and autonomous exchange share the same core guarantees, but their operational flows are different.</p>
       </div>
-      <div class="flow-container">
-        <div class="flow-line"></div>
-        <div class="flow-steps">
-          <div class="flow-step" data-animate>
-            <div class="step-number">1</div>
-            <div class="step-card">
-              <div class="step-icon">🤖</div>
-              <h3>Keypair Generation</h3>
-              <p>Agent generates an ephemeral HPKE keypair. Keys exist only in memory — never written to disk, never logged.</p>
+      <div class="panel-switcher" role="tablist" aria-label="Delivery flow views" data-tab-group="flows">
+        <button class="panel-tab active" type="button" role="tab" aria-selected="true" aria-controls="flow-human" id="tab-flow-human" data-tab-target="flow-human">Human → Agent</button>
+        <button class="panel-tab" type="button" role="tab" aria-selected="false" aria-controls="flow-agent" id="tab-flow-agent" data-tab-target="flow-agent">Agent → Agent</button>
+      </div>
+      <div class="panel-stack">
+        <div class="panel-view active" id="flow-human" role="tabpanel" aria-labelledby="tab-flow-human" data-tab-panel data-tab-group="flows">
+          <div class="flow-grid">
+            <article class="flow-card" data-animate>
+              <span class="flow-step-num">01</span>
+              <h3>Request created</h3>
+              <p>An agent requests a secret and receives a short-lived provisioning session tied to a one-time retrieval window.</p>
+            </article>
+            <article class="flow-card" data-animate>
+              <span class="flow-step-num">02</span>
+              <h3>Secure link delivered</h3>
+              <p>The gateway routes an out-of-band URL and confirmation step to the operator instead of exposing the secret path to the LLM.</p>
+            </article>
+            <article class="flow-card" data-animate>
+              <span class="flow-step-num">03</span>
+              <h3>Browser-side HPKE encryption</h3>
+              <p>The operator enters the value in the browser UI, where HPKE seals the payload before it leaves the client.</p>
+            </article>
+            <article class="flow-card" data-animate>
+              <span class="flow-step-num">04</span>
+              <h3>Single-use retrieval</h3>
+              <p>The agent retrieves ciphertext once, decrypts in memory, and the handoff is purged immediately after success.</p>
+            </article>
+          </div>
+        </div>
+        <div class="panel-view" id="flow-agent" role="tabpanel" aria-labelledby="tab-flow-agent" data-tab-panel data-tab-group="flows" hidden>
+          <div class="a2a-visual" data-animate>
+            <div class="a2a-node">
+              <span class="a2a-node-icon">◧</span>
+              <strong>Requester Agent</strong>
+              <small>needs secret to continue task</small>
+            </div>
+            <div class="a2a-sequence">
+              <div class="a2a-sequence-line"></div>
+              <ol class="a2a-sequence-steps">
+                <li>Requester asks SPS for a policy-scoped exchange.</li>
+                <li>Fulfiller is resolved and authorized by ring + registry rules.</li>
+                <li>Approval is checked if the request demands escalation.</li>
+                <li>Ciphertext is submitted once and retrieved once.</li>
+              </ol>
+            </div>
+            <div class="a2a-node">
+              <span class="a2a-node-icon">⬢</span>
+              <strong>Fulfiller Agent</strong>
+              <small>submits ciphertext without persistent storage</small>
             </div>
           </div>
-          <div class="flow-step" data-animate>
-            <div class="step-number">2</div>
-            <div class="step-card">
-              <div class="step-icon">🔒</div>
-              <h3>Secure Request</h3>
-              <p>SPS creates a secret request with 3-minute TTL, HMAC-signed URL, and a human-readable confirmation code.</p>
-            </div>
-          </div>
-          <div class="flow-step" data-animate>
-            <div class="step-number">3</div>
-            <div class="step-card">
-              <div class="step-icon">💬</div>
-              <h3>Link Delivery</h3>
-              <p>Gateway sends the secure URL to human via Telegram or Slack. The LLM never sees the URL or confirmation code.</p>
-            </div>
-          </div>
-          <div class="flow-step" data-animate>
-            <div class="step-number">4</div>
-            <div class="step-card">
-              <div class="step-icon">🌐</div>
-              <h3>Client-Side Encryption</h3>
-              <p>Human opens the URL, verifies the confirmation code, enters the secret. Browser encrypts with HPKE.Seal — no server sees plaintext.</p>
-            </div>
-          </div>
-          <div class="flow-step" data-animate>
-            <div class="step-number">5</div>
-            <div class="step-card">
-              <div class="step-icon">✅</div>
-              <h3>Retrieve & Destroy</h3>
-              <p>Agent atomically retrieves the ciphertext (single-use), decrypts in memory, then immediately destroys all keys.</p>
-            </div>
+          <div class="a2a-notes">
+            <article class="mini-card" data-animate>
+              <h3>Ephemeral tokens</h3>
+              <p>Capabilities and exchange IDs are short-lived, so permission scope collapses with the request lifecycle.</p>
+            </article>
+            <article class="mini-card" data-animate>
+              <h3>Zero-trust routing</h3>
+              <p>SPS coordinates the delivery, but the secret path still resolves to end-to-end encrypted, single-use retrieval.</p>
+            </article>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Architecture Section -->
-  <section id="architecture">
+  <!-- Platform Section -->
+  <section id="platform">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Architecture</span>
-        <h2 class="section-title">Built for <span class="gradient-text">Zero Trust</span></h2>
-        <p class="section-subtitle">Four components working together with cryptographic guarantees at every boundary.</p>
+        <span class="section-label">Platform</span>
+        <h2 class="section-title">One product surface for dashboard, policy, and <span class="gradient-text">deployment options.</span></h2>
+        <p class="section-subtitle">The hosted story stays in one consolidated section so the page sells the platform without turning into a stack of disconnected screenshots.</p>
       </div>
-      <div class="arch-grid">
-        <div class="arch-card" data-animate>
-          <div class="arch-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="platform-shell">
+        <div class="panel-switcher panel-switcher-platform" role="tablist" aria-label="Platform views" data-tab-group="platform">
+          <button class="panel-tab active" type="button" role="tab" aria-selected="true" aria-controls="platform-dashboard" id="tab-platform-dashboard" data-tab-target="platform-dashboard">Dashboard</button>
+          <button class="panel-tab" type="button" role="tab" aria-selected="false" aria-controls="platform-policy" id="tab-platform-policy" data-tab-target="platform-policy">Policy &amp; Approvals</button>
+          <button class="panel-tab" type="button" role="tab" aria-selected="false" aria-controls="platform-deploy" id="tab-platform-deploy" data-tab-target="platform-deploy">Deployment Options</button>
+        </div>
+
+        <div class="platform-panel active" id="platform-dashboard" role="tabpanel" aria-labelledby="tab-platform-dashboard" data-tab-panel data-tab-group="platform">
+          <div class="platform-copy">
+            <span class="concept-label">Conceptual hosted dashboard</span>
+            <h3>Operate agents, members, approvals, and audit health from one control plane.</h3>
+            <p>Hosted teams need more than crypto primitives. They need visibility into who can provision, which secrets are active, what approvals are pending, and where billing or quota pressure is emerging.</p>
+            <ul class="capability-list">
+              <li>Agent enrollment and member access control</li>
+              <li>Live audit stream and approval inbox</li>
+              <li>Quota, billing, and workspace health summaries</li>
+            </ul>
           </div>
-          <h3>SPS Server</h3>
-          <p>Redis-backed secret provisioning with 3-min auto-expiry TTL, atomic single-use GETDEL retrieval via Lua scripts, and Ed25519 JWT authentication.</p>
-          <div class="arch-tags">
-            <span>Fastify</span><span>Redis</span><span>JWT</span>
+          <div class="dashboard-mock" data-animate>
+            <div class="dashboard-sidebar">
+              <span class="dashboard-brand">Control Plane</span>
+              <a class="dashboard-nav-item active" href="#platform">Agents</a>
+              <a class="dashboard-nav-item" href="#platform">Audit Log</a>
+              <a class="dashboard-nav-item" href="#platform">Approvals</a>
+              <a class="dashboard-nav-item" href="#platform">Billing</a>
+            </div>
+            <div class="dashboard-main">
+              <div class="dashboard-topbar">
+                <span class="dashboard-badge">Environment: Production</span>
+                <span class="dashboard-status">Sync active</span>
+              </div>
+              <div class="dashboard-kpis">
+                <div class="dashboard-kpi"><strong>1,284</strong><span>Active agents</span></div>
+                <div class="dashboard-kpi"><strong>42</strong><span>Pending approvals</span></div>
+                <div class="dashboard-kpi"><strong>14</strong><span>Geo-fenced zones</span></div>
+              </div>
+              <div class="dashboard-panels">
+                <div class="dashboard-table">
+                  <h4>Live audit log</h4>
+                  <div class="dashboard-row"><span>SSH handshake</span><span class="dashboard-pill success">Success</span></div>
+                  <div class="dashboard-row"><span>Policy denial</span><span class="dashboard-pill danger">Blocked</span></div>
+                  <div class="dashboard-row"><span>Secret rotate</span><span class="dashboard-pill success">Success</span></div>
+                  <div class="dashboard-row"><span>Approval escalated</span><span class="dashboard-pill pending">Pending</span></div>
+                </div>
+                <div class="dashboard-sidecards">
+                  <div class="mini-card">
+                    <h4>Security health</h4>
+                    <p>Entropy score 99.2%. Trust ring drift below threshold.</p>
+                  </div>
+                  <div class="mini-card">
+                    <h4>Active members</h4>
+                    <p>4 reviewers online. 2 operators awaiting provisioning tasks.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="arch-card" data-animate>
-          <div class="arch-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+
+        <div class="platform-panel" id="platform-policy" role="tabpanel" aria-labelledby="tab-platform-policy" data-tab-panel data-tab-group="platform" hidden>
+          <div class="platform-copy">
+            <span class="concept-label">Policy engine</span>
+            <h3>Trust rings and approval policy make secret exchange reviewable.</h3>
+            <p>The policy surface is a product differentiator: secret registry awareness, tenant-scoped trust rings, allow or deny decisions, and explicit approval states are visible to operators instead of buried in static config.</p>
+            <ul class="capability-list">
+              <li>Secret registry with risk-aware classification</li>
+              <li>Allow, deny, and pending approval states</li>
+              <li>Versioned and audited policy changes</li>
+            </ul>
           </div>
-          <h3>Browser UI</h3>
-          <p>Self-contained encryption page. No external dependencies, no CDN. HPKE.Seal happens entirely in your browser with a vendored, audited library.</p>
-          <div class="arch-tags">
-            <span>Vanilla JS</span><span>HPKE</span><span>Zero-Dep</span>
+          <div class="policy-layout" data-animate>
+            <div class="trust-rings">
+              <div class="trust-ring trust-ring-outer"></div>
+              <div class="trust-ring trust-ring-mid"></div>
+              <div class="trust-ring trust-ring-core">
+                <span>Registry</span>
+              </div>
+              <div class="trust-ring-label trust-ring-label-left">Ops ring</div>
+              <div class="trust-ring-label trust-ring-label-right">Pending approvals</div>
+            </div>
+            <div class="policy-side">
+              <div class="policy-rule-card">
+                <span class="policy-status permitted">Permitted</span>
+                <h4>Production deploy secrets</h4>
+                <p>Requester: trusted service ring. Approval required only for high-risk registries.</p>
+              </div>
+              <div class="policy-rule-card">
+                <span class="policy-status denied">Denied</span>
+                <h4>External token reuse</h4>
+                <p>Cross-tenant or replay-shaped retrieval attempts are rejected and logged.</p>
+              </div>
+              <div class="policy-audit-card">
+                <h4>Live audit</h4>
+                <div class="policy-audit-row"><span>[allow]</span><span>audit_v1 via policy</span></div>
+                <div class="policy-audit-row"><span>[escalate]</span><span>prod_secret -> reviewer</span></div>
+                <div class="policy-audit-row"><span>[deny]</span><span>guest ring blocked</span></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="arch-card" data-animate>
-          <div class="arch-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+
+        <div class="platform-panel" id="platform-deploy" role="tabpanel" aria-labelledby="tab-platform-deploy" data-tab-panel data-tab-group="platform" hidden>
+          <div class="platform-copy">
+            <span class="concept-label">Infrastructure</span>
+            <h3>Run it your way: self-managed sovereignty or hosted workspace platform.</h3>
+            <p>BlindPass serves both deployment preferences. The landing page needs to show that the open source core remains real while the hosted control plane adds management, onboarding, and operational convenience.</p>
+            <div class="deployment-options">
+              <div class="deployment-option active">
+                <strong>Open Source / Self-Hosted</strong>
+                <p>Full operator control with env-backed bootstrap and local deployment guidance.</p>
+              </div>
+              <div class="deployment-option">
+                <strong>Hosted Workspace Platform</strong>
+                <p>Managed control plane with dashboard UX, approvals, and billing support.</p>
+              </div>
+            </div>
           </div>
-          <h3>Agent Skill</h3>
-          <p>HPKE keypair generation, in-memory SecretStore with Buffer zeroing, custom toJSON() returning [REDACTED], and lazy re-request flow.</p>
-          <div class="arch-tags">
-            <span>TypeScript</span><span>Buffer</span><span>Skills</span>
-          </div>
-        </div>
-        <div class="arch-card" data-animate>
-          <div class="arch-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
-          </div>
-          <h3>Gateway</h3>
-          <p>LLM-blind URL generation, egress URL filtering with homograph attack detection, Ed25519 identity signing, and anti-phishing controls.</p>
-          <div class="arch-tags">
-            <span>DLP</span><span>Ed25519</span><span>Filter</span>
+          <div class="deployment-mock terminal" data-animate>
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-title">docker-compose.yaml</span>
+            </div>
+            <div class="terminal-body">
+              <pre><code><span class="comment">services:</span>
+  blindpass-sps:
+    image: <span class="string">ghcr.io/atas-tech/blindpass-sps:latest</span>
+    environment:
+      - <span class="json-key">TRUST_RING=ops</span>
+      - <span class="json-key">FLOW_MODE=STRICT</span>
+    ports:
+      - <span class="string">"3100:3100"</span>
+
+<span class="prompt">$</span> <span class="cmd">docker compose up -d</span>
+<span class="output">✓ sps listening on http://localhost:3100</span></code></pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Defense in Depth Section -->
-  <section id="defense">
+  <!-- Security Section -->
+  <section id="security">
     <div class="section-container">
       <div class="section-header">
         <span class="section-label">Security</span>
-        <h2 class="section-title"><span class="gradient-text">11 Layers</span> of Security</h2>
-        <p class="section-subtitle">Defense in depth, not security theater. Every layer neutralizes a specific threat.</p>
+        <h2 class="section-title"><span class="gradient-text">11 layers</span> with concrete protocol boundaries.</h2>
+        <p class="section-subtitle">BlindPass should sound like a real security product, not a hand-wavy concept page. Each layer maps to a specific leakage or impersonation risk.</p>
       </div>
       <div class="defense-stack">
         <div class="defense-layer" data-animate data-layer="1">
           <span class="layer-num">01</span>
           <div class="layer-content">
-            <h4>HPKE Ephemeral Keys</h4>
-            <p>Key compromise → no forward exposure</p>
+            <h4>HPKE ephemeral keys</h4>
+            <p>Per-request encryption keys reduce forward exposure.</p>
           </div>
           <span class="layer-badge">Crypto</span>
         </div>
         <div class="defense-layer" data-animate data-layer="2">
           <span class="layer-num">02</span>
           <div class="layer-content">
-            <h4>Client-Side Encryption</h4>
-            <p>Secret never plaintext on wire</p>
+            <h4>Client-side encryption</h4>
+            <p>Secrets are sealed before the payload leaves the browser.</p>
           </div>
           <span class="layer-badge">Crypto</span>
         </div>
         <div class="defense-layer" data-animate data-layer="3">
           <span class="layer-num">03</span>
           <div class="layer-content">
-            <h4>Zero-Knowledge SPS</h4>
-            <p>Service compromise → no secrets exposed</p>
+            <h4>Zero-knowledge SPS</h4>
+            <p>The coordinator handles ciphertext and retrieval state, not plaintext values.</p>
           </div>
           <span class="layer-badge">Architecture</span>
         </div>
         <div class="defense-layer" data-animate data-layer="4">
           <span class="layer-num">04</span>
           <div class="layer-content">
-            <h4>Single-Use IDs + 3-Min TTL</h4>
-            <p>Replay attacks blocked</p>
+            <h4>Single-use retrieval + TTL</h4>
+            <p>Replay attempts fail once the session is consumed or expires.</p>
           </div>
           <span class="layer-badge">Protocol</span>
         </div>
         <div class="defense-layer" data-animate data-layer="5">
           <span class="layer-num">05</span>
           <div class="layer-content">
-            <h4>Hardened Device Flow</h4>
-            <p>Phishing via prompt injection neutralized</p>
+            <h4>Hardened confirmation flow</h4>
+            <p>Operators verify the request before entering the value.</p>
           </div>
           <span class="layer-badge">UX</span>
         </div>
         <div class="defense-layer" data-animate data-layer="6">
           <span class="layer-num">06</span>
           <div class="layer-content">
-            <h4>LLM Blindness</h4>
-            <p>Agent never sees URL or confirmation code</p>
+            <h4>LLM blindness</h4>
+            <p>Prompts and model context never receive the secret or approval URL.</p>
           </div>
           <span class="layer-badge highlight">Critical</span>
         </div>
         <div class="defense-layer" data-animate data-layer="7">
           <span class="layer-num">07</span>
           <div class="layer-content">
-            <h4>Gateway Egress Filtering</h4>
-            <p>LLM-injected malicious URLs redacted</p>
+            <h4>Gateway egress filtering</h4>
+            <p>Unexpected or malicious URLs can be redacted before the agent sees them.</p>
           </div>
           <span class="layer-badge highlight">Critical</span>
         </div>
         <div class="defense-layer" data-animate data-layer="8">
           <span class="layer-num">08</span>
           <div class="layer-content">
-            <h4>SPIFFE/SPIRE Identity</h4>
-            <p>Agent impersonation prevented</p>
+            <h4>Pluggable identity (SPIFFE/SPIRE ready)</h4>
+            <p>JWT providers are the default path; stronger workload identity can plug in when needed.</p>
           </div>
           <span class="layer-badge">Identity</span>
         </div>
         <div class="defense-layer" data-animate data-layer="9">
           <span class="layer-num">09</span>
           <div class="layer-content">
-            <h4>In-Memory + Zeroing</h4>
-            <p>Crash dumps and disk forensics defeated</p>
+            <h4>In-memory handling + zeroing</h4>
+            <p>Secrets avoid disk persistence and are cleared after use.</p>
           </div>
           <span class="layer-badge">Runtime</span>
         </div>
         <div class="defense-layer" data-animate data-layer="10">
           <span class="layer-num">10</span>
           <div class="layer-content">
-            <h4>Audit Logging</h4>
-            <p>Non-repudiation and rogue agent detection</p>
+            <h4>Audited policy decisions</h4>
+            <p>Approvals, denials, and handoff events remain reviewable after execution.</p>
           </div>
           <span class="layer-badge">Ops</span>
         </div>
         <div class="defense-layer" data-animate data-layer="11">
           <span class="layer-num">11</span>
           <div class="layer-content">
-            <h4>TEE Execution</h4>
-            <p>Host OS compromise neutralized (optional)</p>
+            <h4>TEE execution support</h4>
+            <p>Optional hardening for operators who need stronger runtime isolation.</p>
           </div>
           <span class="layer-badge">Hardware</span>
         </div>
@@ -535,106 +603,140 @@
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section id="features">
+  <!-- Pricing Section -->
+  <section id="pricing">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Features</span>
-        <h2 class="section-title">Why <span class="gradient-text">BlindPass</span></h2>
-        <p class="section-subtitle">State-of-the-art cryptography, designed specifically for LLMs and ephemeral interactions.</p>
+        <span class="section-label">Pricing</span>
+        <h2 class="section-title">Open source forever, <span class="gradient-text">managed for teams.</span></h2>
+        <p class="section-subtitle">Hosted workspace pricing should be easy to understand, while advanced machine-payment paths like x402 stay clearly separate.</p>
       </div>
-      <div class="features-grid">
-        <div class="feature-card" data-animate>
-          <div class="feature-icon cyan">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          </div>
-          <h3>HPKE (RFC 9180)</h3>
-          <p>X25519 + HKDF-SHA256 + ChaCha20-Poly1305. Industry-standard hybrid encryption, not homebrew crypto.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-icon purple">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23" stroke-width="2.5"/></svg>
-          </div>
-          <h3>LLM Blindness</h3>
-          <p>The AI agent never sees the secret URL or confirmation code. Gateway controls the entire delivery flow.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-icon green">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3>Ephemeral Keys</h3>
-          <p>Per-request keypairs. Generated, used once, destroyed. No key storage, no forward exposure.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-icon blue">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-          </div>
-          <h3>In-Memory Only</h3>
-          <p>Secrets live in zeroed Buffers. No disk, no logs, no serialization. Agent crash = clean slate.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-icon orange">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/><line x1="4" y1="4" x2="20" y2="20" stroke-width="2.5"/></svg>
-          </div>
-          <h3>Single-Use Retrieval</h3>
-          <p>Atomic GETDEL via Redis Lua script. First retrieval succeeds, all subsequent attempts get 410 Gone.</p>
-        </div>
-        <div class="feature-card" data-animate>
-          <div class="feature-icon red">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>Anti-Phishing</h3>
-          <p>HMAC-signed URLs, human-readable confirmation codes, egress URL filtering. Social engineering blocked at every layer.</p>
-        </div>
+      <div class="pricing-grid">
+        <article class="pricing-card" data-animate>
+          <span class="pricing-tier-label">Self-Managed</span>
+          <h3>Open Source Core</h3>
+          <div class="pricing-price">$0</div>
+          <p class="pricing-subcopy">Forever</p>
+          <ul class="pricing-features">
+            <li>RFC 9180 HPKE cryptography</li>
+            <li>In-memory secret delivery</li>
+            <li>Single-use retrieval</li>
+            <li>Community support</li>
+          </ul>
+          <a href="https://github.com/atas-tech/blindpass" class="btn btn-outline pricing-button" target="_blank" rel="noopener">View GitHub</a>
+        </article>
+        <article class="pricing-card pricing-card-featured" data-animate>
+          <span class="pricing-tier-label pricing-tier-label-featured">Managed Cloud</span>
+          <h3>Hosted Platform</h3>
+          <div class="pricing-price">$29</div>
+          <p class="pricing-subcopy">per workspace / month</p>
+          <ul class="pricing-features">
+            <li>Everything in Open Source Core</li>
+            <li>Hosted policy and dashboard UX</li>
+            <li>Approval inbox and audit streams</li>
+            <li>Billing, quotas, and team management</li>
+          </ul>
+          <a href="https://app.atas.tech/" class="btn btn-primary pricing-button" target="_blank" rel="noopener">Join Waitlist</a>
+        </article>
+      </div>
+      <div class="x402-note mini-card" data-animate>
+        <strong>x402 autonomous billing</strong>
+        <p>`x402` supports advanced per-request machine payment flows. It is separate from recurring hosted workspace pricing and should be treated as an optional capability, not the default plan model.</p>
       </div>
     </div>
   </section>
 
-  <!-- Get Started Section -->
-  <section id="get-started">
+  <!-- Comparison Section -->
+  <section id="comparison">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Quick Start</span>
-        <h2 class="section-title">Get Started in <span class="gradient-text">60 Seconds</span></h2>
-        <p class="section-subtitle">Integrate secure secret provisioning with just a few lines of code.</p>
+        <span class="section-label">Comparison</span>
+        <h2 class="section-title">Choose the deployment model that matches your <span class="gradient-text">operating posture.</span></h2>
+        <p class="section-subtitle">Pricing answers plan questions. This grid answers scope questions.</p>
       </div>
-      <div class="terminal-wrapper" data-animate>
-        <div class="terminal">
-          <div class="terminal-header">
-            <div class="terminal-dots">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-            <span class="terminal-title">terminal</span>
-          </div>
-          <div class="terminal-body">
-            <pre><code><span class="comment"># Install BlindPass</span>
-<span class="prompt">$</span> <span class="cmd">npm install</span> blindpass
+      <div class="comparison-shell" data-animate>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Open Source Core</th>
+              <th>Hosted Platform</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Feature">Deploy yourself</td>
+              <td data-label="Open Source Core">Yes</td>
+              <td data-label="Hosted Platform">No</td>
+            </tr>
+            <tr>
+              <td data-label="Feature">Browser encryption</td>
+              <td data-label="Open Source Core">Yes</td>
+              <td data-label="Hosted Platform">Yes</td>
+            </tr>
+            <tr>
+              <td data-label="Feature">Agent-to-agent exchange</td>
+              <td data-label="Open Source Core">Yes</td>
+              <td data-label="Hosted Platform">Yes</td>
+            </tr>
+            <tr>
+              <td data-label="Feature">Dashboard UX</td>
+              <td data-label="Open Source Core">Basic</td>
+              <td data-label="Hosted Platform">Advanced</td>
+            </tr>
+            <tr>
+              <td data-label="Feature">Billing and quotas</td>
+              <td data-label="Open Source Core">Self-managed</td>
+              <td data-label="Hosted Platform">Fully managed</td>
+            </tr>
+            <tr>
+              <td data-label="Feature">Hosted onboarding</td>
+              <td data-label="Open Source Core">No</td>
+              <td data-label="Hosted Platform">Yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-<span class="comment"># Start the secret provisioning service</span>
+  <!-- Final CTA Section -->
+  <section id="final-cta">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">Next Step</span>
+        <h2 class="section-title">Keep the terminal credibility, but give each audience a <span class="gradient-text">clear path.</span></h2>
+        <p class="section-subtitle">Open source users can read the docs or self-host. Hosted buyers can go straight to the product path.</p>
+      </div>
+      <div class="final-cta-shell">
+        <div class="terminal-wrapper" data-animate>
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-title">terminal</span>
+            </div>
+            <div class="terminal-body">
+              <pre><code><span class="comment"># start local blindpass services</span>
+<span class="prompt">$</span> <span class="cmd">npm install</span>
 <span class="prompt">$</span> <span class="cmd">npx</span> blindpass serve
 
-<span class="output">🔒 SPS Server running on http://localhost:3100</span>
-<span class="output">🔑 Gateway identity loaded (Ed25519)</span>
-<span class="output">✅ Ready to provision secrets</span>
-
-<span class="comment"># In your agent code</span>
-<span class="keyword">const</span> secret = <span class="keyword">await</span> agent.<span class="func">requestSecret</span>(<span class="string">"Stripe API Key"</span>);
-<span class="comment">// → Human receives secure link via Telegram</span>
-<span class="comment">// → Secret encrypted client-side with HPKE</span>
-<span class="comment">// → Agent decrypts in-memory, keys destroyed</span></code></pre>
+<span class="output">✓ SPS server ready on http://localhost:3100</span>
+<span class="output">✓ Browser UI ready for one-time provisioning</span>
+<span class="output">✓ Agent secret delivery waiting for retrieval</span></code></pre>
+            </div>
           </div>
         </div>
         <div class="cta-row">
           <a href="https://github.com/atas-tech/blindpass" class="btn btn-primary btn-large" target="_blank" rel="noopener">
-            <span>Read the Docs</span>
+            <span>Read Docs</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="https://github.com/atas-tech/blindpass" class="btn btn-outline" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>Star on GitHub</span>
-          </a>
+          <a href="https://github.com/atas-tech/blindpass/blob/main/docs/deployment/Unraid.md" class="btn btn-outline btn-large" target="_blank" rel="noopener">Self-Host</a>
+          <a href="https://app.atas.tech/" class="btn btn-outline btn-large" target="_blank" rel="noopener">Explore Hosted</a>
         </div>
       </div>
     </div>
@@ -645,38 +747,38 @@
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#" class="logo">
+          <a href="#hero" class="logo">
             <span class="logo-icon">🔐</span>
             <span class="logo-text">Blind<span class="logo-highlight">Pass</span></span>
           </a>
-          <p>Zero-knowledge secret provisioning for AI agents.</p>
+          <p>Zero-knowledge secret delivery for human handoff, agent exchange, and hosted operator control.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
             <h4>Product</h4>
-            <a href="#features">Features</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#architecture">Architecture</a>
-            <a href="#defense">Security</a>
+            <a href="#use-cases">Use Cases</a>
+            <a href="#platform">Platform</a>
+            <a href="#security">Security</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <a href="https://github.com/atas-tech/blindpass" target="_blank" rel="noopener">Documentation</a>
+            <a href="https://github.com/atas-tech/blindpass" target="_blank" rel="noopener">Core Repo</a>
+            <a href="https://github.com/atas-tech/blindpass/blob/main/docs/security/Security%20Audit.md" target="_blank" rel="noopener">Security Audit</a>
+            <a href="https://github.com/atas-tech/blindpass/blob/main/docs/deployment/Unraid.md" target="_blank" rel="noopener">Deployment Guide</a>
           </div>
           <div class="footer-col">
             <h4>Organization</h4>
             <a href="https://atas.tech/" target="_blank" rel="noopener">Atas Tech</a>
             <a href="https://github.com/atas-tech" target="_blank" rel="noopener">GitHub</a>
-          </div>
-          <div class="footer-col">
-            <h4>Resources</h4>
-            <a href="#">Documentation</a>
-            <a href="https://github.com/atas-tech/blindpass">Core Repo</a>
-            <a href="#">Security Policy</a>
+            <a href="https://app.atas.tech/" target="_blank" rel="noopener">Hosted Platform</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>Built with 🔐 for the age of AI agents</p>
-        <p class="footer-copyright">© 2026 tuthan / BlindPass. Open source project.</p>
-
-        <p class="footer-contact">Contact: <a href="https://github.com/tuthan">github: tuthan</a> — <a href="mailto:hung@atas.tech">email: hung@atas.tech</a></p>
+        <p>Built for operators and autonomous systems that cannot afford plaintext leakage.</p>
+        <p class="footer-copyright">© 2026 BlindPass. Open source core, hosted platform.</p>
       </div>
     </div>
   </footer>

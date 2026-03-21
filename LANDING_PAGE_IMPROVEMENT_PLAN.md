@@ -667,6 +667,8 @@ Avoid:
 
 ### Phase A — Stitch Design (batch)
 
+> **Design system input** — Stitch should consume [`DESIGN.md`](DESIGN.md) as the design system source of truth. All new sections and components must follow the tokens, elevation rules, and Do's/Don'ts defined there.
+
 Design these together as they form the "new product story" block:
 
 1. Use Cases section layout (item 2)
@@ -676,7 +678,7 @@ Design these together as they form the "new product story" block:
 5. Deployment Options / Platform section layout (item 2)
 6. Pricing section or Pricing-within-Platform layout (item 9)
 7. OSS vs Hosted comparison component (item 8)
-8. Design the internal `Platform` layout pattern: tabs, accordions, or stacked panels
+8. Platform layout pattern: tabs, accordions, or stacked panels (component guidance defined in `DESIGN.md`)
 
 ### Phase B — Code Implementation
 
@@ -688,7 +690,7 @@ Design these together as they form the "new product story" block:
 6. Replace quick-start / CTA section (item 6)
 7. **Remove old Architecture and Features sections** — content is folded into Use Cases, Platform, and comparison; leaving them in place alongside the new sections would duplicate information
 8. Audit all copy claims against core docs (item 7)
-9. Update `SPEC.md` with new sections, tokens, and components
+9. Update `DESIGN.md` with any new component specs, then sync `SPEC.md` with new animation timings, breakpoint changes, and content sources
 
 ### Phase C — Verification
 

@@ -13,46 +13,11 @@ This project uses Stitch for rapid design iterations and conceptual mockups.
 
 ## 1. Design System
 
-### Color Palette
+The canonical design system is defined in [`DESIGN.md`](DESIGN.md). It follows the [Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/design-md/overview/) and covers colors, typography, elevation, components, and design guardrails.
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--bg-primary` | `#060a14` | Page background |
-| `--bg-secondary` | `#0c1222` | Alternating section backgrounds |
-| `--bg-card` | `rgba(14, 22, 42, 0.6)` | Card backgrounds (glassmorphism) |
-| `--text-primary` | `#f0f4ff` | Headings, primary text |
-| `--text-secondary` | `#8892a8` | Body text, descriptions |
-| `--text-muted` | `#5a6478` | Labels, captions |
-| `--cyan` | `#00f5d4` | Primary accent (CTAs, highlights) |
-| `--purple` | `#7b61ff` | Secondary accent (gradients) |
-| `--danger` | `#ff4757` | Problem/warning elements |
+CSS implementation of these tokens lives in `:root` at the top of `style.css`.
 
-### Typography
-
-| Element | Font | Weight | Size |
-|---------|------|--------|------|
-| Headings | Inter | 700–900 | 32–58px (clamp) |
-| Body | Inter | 400–500 | 14–18px |
-| Code/Mono | JetBrains Mono | 400–600 | 12–14px |
-| Labels | Inter | 600 | 12–13px, uppercase |
-
-### Gradients
-
-```css
-/* Primary text gradient (cyan → purple) */
---gradient-text: linear-gradient(135deg, #00f5d4 0%, #7b61ff 100%);
-
-/* Button gradient */
---gradient-btn: linear-gradient(135deg, #00f5d4 0%, #00b4d8 50%, #7b61ff 100%);
-```
-
-### Spacing
-
-- Section padding: `120px` vertical (desktop), `80px` (mobile)
-- Container max-width: `1200px`
-- Card padding: `36px`
-- Card border-radius: `20px`
-- Grid gaps: `24px`
+**Do not duplicate design tokens here.** If a color, font, or component style needs to change, update `DESIGN.md` first and then sync `style.css`.
 
 ---
 
@@ -66,10 +31,11 @@ All cards use **glassmorphism**: translucent background with `backdrop-filter: b
 - **Outline** (`btn-outline`): Transparent with border, fill on hover
 
 ### Hero
-- **Mode toggle**: pill switch between `Human` and `Agent` views
-- **Human view**: headline, supporting copy, CTA pair, trust stats
-- **Agent view**: headline, supporting copy, terminal/JSON preview, security note, support cards, capability badges
-- **Animated visual**: the existing particle background + shield/ring animation remains the persistent hero anchor across both views
+- **Unified message**: presents a single value proposition covering both human and agent workflows (the Human/Agent toggle is reserved for the How It Works section, not the hero — see `LANDING_PAGE_IMPROVEMENT_PLAN.md`)
+- **Primary CTA**: hosted platform path
+- **Secondary CTA**: docs or self-hosting path
+- **Trust row**: compact badges for HPKE (RFC 9180), single-use retrieval, in-memory only, Open Source + Hosted
+- **Animated visual**: the existing particle background + shield/ring animation remains the persistent hero anchor
 
 ### Section Headers
 Each section follows the pattern:

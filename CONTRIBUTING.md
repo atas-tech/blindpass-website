@@ -16,7 +16,8 @@ No build tools, no dependencies, no frameworks. Just HTML, CSS, and JS.
 ## Guidelines
 
 ### Design Consistency
-- Read `SPEC.md` before making visual changes — it documents the full design system
+- Read `DESIGN.md` for the design system (colors, typography, elevation, components, do's/don'ts)
+- Read `SPEC.md` for implementation details (animations, breakpoints, SEO, content sources)
 - Use CSS custom properties from `:root` (don't hardcode colors)
 - Follow the glassmorphism card pattern for new components
 - Keep the dark theme consistent

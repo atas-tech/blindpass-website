@@ -2129,6 +2129,13 @@ body.hero-mode-agent #footer {
   pointer-events: none;
 }
 
+.use-case-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
 .use-case-icon {
   width: 48px;
   height: 48px;
@@ -2140,7 +2147,7 @@ body.hero-mode-agent #footer {
   color: var(--cyan);
   background: rgba(0, 245, 212, 0.1);
   border: 1px solid rgba(0, 245, 212, 0.16);
-  margin-bottom: 18px;
+  flex-shrink: 0;
 }
 
 .use-case-tag,
